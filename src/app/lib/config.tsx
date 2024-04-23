@@ -2,15 +2,15 @@
 import { useEffect, useState } from "react"
 
 export function useLoginToken() {
+  useEffect(() => {
   if (typeof window != "undefined" && window.localStorage) {
     const [token, setToken] = useState<any>(null)
-    useEffect(() => {
       let lSTOken = localStorage.getItem("token")
       setToken(lSTOken)
-    }, [])
-
-    return token == "null" ? null : token
-  }
+      
+      return token == "null" ? null : token
+    }
+  }, [])
 
   return null
 }

@@ -2,7 +2,7 @@
 import Image from "next/image"
 import { crimsonText } from "../fonts"
 import Link from "next/link"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import clsx from "clsx"
 import Button from "./button"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -40,7 +40,19 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
   const mediaLg = window.matchMedia("(min-width: 1024px)")
   const mediaMd = window.matchMedia("(min-width: 768px)")
   const mediaSm = window.matchMedia("(min-width: 640px)")
-  const itemDisplayed = isCategory ? [3, 2, 2, 1, 1] : isProduct ? [4, 3, 3, 2, 2] : isAllCategories ? [2, 2, 2, 2, 1] : isTestimonials ? [3, 3, 2, 2, 1] : [5, 4, 3, 2, 2]
+  const itemDisplayed = useMemo(() => {
+    if (isCategory) {
+      return [3, 2, 2, 1, 1]
+    } else if (isProduct) {
+      return [4, 3, 3, 2, 2]
+    } else if (isAllCategories) {
+      return [2, 2, 2, 2, 1]
+    } else if (isTestimonials) {
+      return [3, 3, 2, 2, 1]
+    } else {
+      return [5, 4, 3, 2, 2]
+    }
+  }, [isCategory, isProduct, isAllCategories, isTestimonials])
   const [temptItemDisplayed, setTemptItemDisplayed] = useState(0)
   const currItemDisplayed = mediaXl.matches ? itemDisplayed[0] : mediaLg.matches ? itemDisplayed[1] : mediaMd.matches ? itemDisplayed[2] : mediaSm.matches ? itemDisplayed[3] : itemDisplayed[4]
   let showSliderBtn = false

@@ -1,5 +1,5 @@
 "use client"
-import { getLoginToken } from "@/app/lib/config";
+import { useLoginToken } from "@/app/lib/config";
 import Carousel from "../carousel";
 import clsx from "clsx";
 
@@ -19,7 +19,7 @@ export default function ProductsCarousel({
   isProduct,
   productCardCls,
   custCls, }: ProductCarouselProps) {
-  let token = getLoginToken()  
+  let token = useLoginToken()
 
   return (
     <>

@@ -1,11 +1,9 @@
 "use client"
 import { usePathname } from "next/navigation";
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext } from "react";
 import Navbar from "./navbar/navbar";
 import Footer from "./footer";
-import { getLoginToken } from "@/app/lib/config";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
 import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 
@@ -13,7 +11,6 @@ export const NavigationContext = createContext('/')
 export default function NavigationProvider({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const { contacts } = require("@/app/lib/placeholder-data")
-  const [token, setToken] = useState<string | null>(null)
 
   // useEffect(() => {
   if (pathname !== "/login" && pathname !== "/registration") {

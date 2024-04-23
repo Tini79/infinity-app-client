@@ -62,46 +62,49 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
 
   // HOOK
   useEffect(() => {
-    const handleResize = () => {
-      setCurrWindowWidth(window.innerWidth)
-    }
-    // TODO: masih bug ini carouselnya, bosen gw lama" benerin ini mak
-    window.addEventListener("resize", handleResize)
-    if (carouselChildrenCounts && carouselContainer instanceof HTMLElement && carouselContainer?.children[0] instanceof HTMLElement && carouselContainer?.children[1] instanceof HTMLElement) {
-      if (counts > 0) {
-        const gapValue = carouselContainer?.children[1].offsetLeft - carouselContainer?.children[0].offsetWidth
-        if (temptWindowWidth > currWindowWidth) {
-          carouselContainer.style.left = `${0 - ((carouselContainer?.children[0].offsetWidth + gapValue) * counts)}px`
-        } else if (temptWindowWidth < currWindowWidth) {
-          if (currItemDisplayed > temptItemDisplayed) {
-            toShow.current = currItemDisplayed - itemDisplayed[4]
+    if (typeof window !== 'undefined') {
+
+      const handleResize = () => {
+        setCurrWindowWidth(window.innerWidth)
+      }
+      // TODO: masih bug ini carouselnya, bosen gw lama" benerin ini mak
+      window.addEventListener("resize", handleResize)
+      if (carouselChildrenCounts && carouselContainer instanceof HTMLElement && carouselContainer?.children[0] instanceof HTMLElement && carouselContainer?.children[1] instanceof HTMLElement) {
+        if (counts > 0) {
+          const gapValue = carouselContainer?.children[1].offsetLeft - carouselContainer?.children[0].offsetWidth
+          if (temptWindowWidth > currWindowWidth) {
+            carouselContainer.style.left = `${0 - ((carouselContainer?.children[0].offsetWidth + gapValue) * counts)}px`
+          } else if (temptWindowWidth < currWindowWidth) {
+            if (currItemDisplayed > temptItemDisplayed) {
+              toShow.current = currItemDisplayed - itemDisplayed[4]
+            }
+
+            carouselContainer.style.left = `${0 - ((carouselContainer?.children[0].offsetWidth + gapValue) * (counts - toShow.current))}px`
           }
 
-          carouselContainer.style.left = `${0 - ((carouselContainer?.children[0].offsetWidth + gapValue) * (counts - toShow.current))}px`
-        }
-
-        if (isEndLimit) {
-          if (temptWindowWidth > currWindowWidth && currItemDisplayed < temptItemDisplayed) {
-            setIsEndLimit(false)
-          } else if (temptWindowWidth < currWindowWidth && currItemDisplayed > temptItemDisplayed) {
-            setIsEndLimit(true)
+          if (isEndLimit) {
+            if (temptWindowWidth > currWindowWidth && currItemDisplayed < temptItemDisplayed) {
+              setIsEndLimit(false)
+            } else if (temptWindowWidth < currWindowWidth && currItemDisplayed > temptItemDisplayed) {
+              setIsEndLimit(true)
+            }
           }
         }
+
+        // // slider for all product categories
+        // sliderWidth.current = Math.round(100 / carouselChildrenCounts)
       }
 
-      // // slider for all product categories
-      // sliderWidth.current = Math.round(100 / carouselChildrenCounts)
-    }
+      // // productCategoriesCarousel
+      // if (productCategoriesCarousel?.children[0] instanceof HTMLElement) {
+      //   console.log(productCategoriesCarousel?.children[0].offsetLeft, 'productCategoriesCarousel');
+      // }
 
-    // // productCategoriesCarousel
-    // if (productCategoriesCarousel?.children[0] instanceof HTMLElement) {
-    //   console.log(productCategoriesCarousel?.children[0].offsetLeft, 'productCategoriesCarousel');
-    // }
-
-    setTemptWindowWidth(currWindowWidth)
-    setTemptItemDisplayed(currItemDisplayed)
-    return () => {
-      window.addEventListener("resize", handleResize)
+      setTemptWindowWidth(currWindowWidth)
+      setTemptItemDisplayed(currItemDisplayed)
+      return () => {
+        window.addEventListener("resize", handleResize)
+      }
     }
   }, [counts, isStartLimit, isEndLimit, temptWindowWidth, currWindowWidth, carouselContainer, carouselChildrenCounts, itemDisplayed, temptItemDisplayed, currItemDisplayed])
 

@@ -6,6 +6,7 @@ import Hero from "../../../ui/components/hero";
 import { crimsonText } from "../../../ui/fonts";
 import Image from "next/image"
 import ProductsCarousel from "@/app/ui/components/home/products-carousel";
+import dynamic from "next/dynamic";
 
 export default async function Category({ params }: { params: { slug: string } }) {
   const imageUrl = `/imgs/categories/${params.slug}.jpg`;
@@ -22,7 +23,7 @@ export default async function Category({ params }: { params: { slug: string } })
     { name: "The Balinese Charm", path: "imgs/carousel-1.jpg", desc: "This charm embodies various Balinese values, such as strength, acceptance, reincarnation, balance, faith, appreciation, love, beauty, and wisdom.", href: "/category" },
     { name: "Color Beads, Gemnstones, Glass and Crystals", path: "imgs/carousel-1.jpg", desc: "These materials are inspired by the relationship between humans. They represent the creative expressions and shared emotions that bring people together, creating something captivating to the eye.", href: "/category" },
   ]
-
+  const DynamicCarousel = dynamic(() => import("../../../ui/components/carousel"), { ssr: false })
 
   return (
     <>
@@ -30,7 +31,7 @@ export default async function Category({ params }: { params: { slug: string } })
         <Hero isHomepage={false} title="Tri Hita Karana" subTitle="bracelets" />
       </section >
       {/* <section className="lg:px-10 sm:px-[30px] px-5 lg:mb-20 sm:mb-[60px] mb-10 ">
-        <Carousel title="New Arrivals" data={products.products} isProduct productCardCls="bg-bs-fourth bg-opacity-[2%]" />
+        <DynamicCarousel title="New Arrivals" data={products.products} isProduct productCardCls="bg-bs-fourth bg-opacity-[2%]" />
       </section> */}
       <ProductsCarousel id="newArrivals" title="New Arrivals" data={products.products} isProduct productCardCls="bg-bs-fourth bg-opacity-[2%]" custCls="lg:mb-20 sm:mb-[60px] mb-10" />
       <Description isBgPrimary title="Cultivate Harmony Within & Around You" desc={`Inspired by the ancient Balinese philosophy \"Tri Hita Karana\" (meaning \"three causes of well-being\" or \"three paths to prosperity\"), the Tri Hita Karana bracelet emphasizes harmonious balance among three fundamental elements.`}>
@@ -60,8 +61,8 @@ export default async function Category({ params }: { params: { slug: string } })
         </div>
       </section>
       <Description customSectionCls="lg:mb-20 sm:mb-[60px] mb-10 " isBgPrimary={false} hasCarousel title="The Tri Hita Karana bracelets is crafted with mindful attention to the Balinese philosophy, reflected in the materials we  choose.">
-        {/* <Carousel data={productList} /> */}
-        <Carousel id="description" data={images} />
+        {/* <DynamicCarousel data={productList} /> */}
+        <DynamicCarousel id="description" data={images} />
       </Description>
       {/* TODO: belum filter base on popular yak ini */}
       <ProductsCarousel id="mostPopular" title="Most Popular" data={products.products} isProduct custCls="sm:py-20 py-10 bg-bs-fourth bg-opacity-[2%]" />
@@ -96,11 +97,11 @@ export default async function Category({ params }: { params: { slug: string } })
         </div>
         <div>
           {/* TODO: belum terfilter */}
-          <Carousel id="allProducts" data={products.products} isAllProducts />
+          <DynamicCarousel id="allProducts" data={products.products} isAllProducts />
         </div>
       </section >
       <section className="lg:px-10 px-5 lg:py-20 py-10 bg-bs-fourth bg-opacity-[2%]">
-        <Carousel id="seeAlso" data={anotherCategories} title="See Also" isCategory />
+        <DynamicCarousel id="seeAlso" data={anotherCategories} title="See Also" isCategory />
       </section>
     </>
   )

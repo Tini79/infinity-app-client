@@ -55,7 +55,7 @@ export default async function Category({ params }: { params: { slug: string } })
           <Image src="/imgs/tri-hita-karana-collections.jpg" alt="Tri Hita Karana Bracelet Collections" width={630} height={450} className="md:w-1/2 w-full" />
           <div className="lg:mx-10 md:mx-5 md:mt-0 sm:mt-10 mt-5">
             <h2 className={`${crimsonText.className} lg:text-[36px] sm:text-[34px] text-[32px] lg:mb-4 sm:mb-3 mb-2 !font-bold`}>Harmony in Every Bead</h2>
-            <p className="text-justify lg:text-base sm:text-sm text-xs">The Tri Hita Karana bracelet typically incorporates symbols or designs representing the three elements of harmony between divinity, humanity, and nature. This serves as a constant reminder of the philosophy's core message. It's often worn not just as a fashion accessory but also as a spiritual and cultural symbol.</p>
+            <p className="text-justify lg:text-base sm:text-sm text-xs">The Tri Hita Karana bracelet typically incorporates symbols or designs representing the three elements of harmony between divinity, humanity, and nature. This serves as a constant reminder of the philosophy&lsquo;s core message. It&lsquo;s often worn not just as a fashion accessory but also as a spiritual and cultural symbol.</p>
           </div>
         </div>
       </section>

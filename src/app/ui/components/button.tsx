@@ -40,7 +40,7 @@ export default function Button({ btnType, isAuth = false }: ButtonProps) {
             {/* <MyContext.Provider > */}
             <button type="submit" className="w-full border-2 border-bs-secondary bg-bs-secondary text-bs-primary--darker !font-medium lg:text-base sm:text-sm text-xs lg:py-3 sm:py-[9px] py-1.5 lg:px-16 sm:px-[42px] px-8 hover:bg-bs-secondary--darker hover:border-bs-secondary--darker ">Submit</button>
             <div className="lg:mt-2 sm:mb-1.5 mb-1 text-center">
-              <span className="lg:text-sm sm:text-xs text-[10px]">Don't have an account?&nbsp;
+              <span className="lg:text-sm sm:text-xs text-[10px]">Don&lsquo;t have an account?&nbsp;
                 <Link href={pathname == "/login" && "/registration" || (pathname == "/registration" ? "/login" : "")} className="text-bs-fourth font-medium hover:text-bs-third underline lg:underline-offset-8 sm:underline-offset-[6px] underline-offset-4">{pathname == "/login" ? "Register" : pathname == "/registration" && "Login"}</Link></span>
             </div>
             {/* </MyContext.Provider> */}

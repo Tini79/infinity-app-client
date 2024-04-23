@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.carousel-container::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+button:disabled .slider-icon {
+  color: rgba(103, 88, 35, 0.5);
+}
+
+button.center-slider:disabled  {
+  background-color: rgba(103, 88, 35, 0.5);
+}
+
+#navbarLogo {
+  transition: all 0.5s ease-out;
+}
+
+#aside {
+  transition: left 0.5s ease;
+}

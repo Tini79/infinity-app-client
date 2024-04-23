@@ -9,23 +9,23 @@ import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const { contacts, navMenus } = require("@/app/lib/placeholder-data")
-  const [logoSize, setLogoSize] = useState("lg:w-[191px] md:w-full w-3/4")
-
-  function handleLogoSize() {
-    if (window.scrollY > 0) {
-      setLogoSize("md:w-3/5 w-[97px]")
-    } else {
-      setLogoSize("lg:w-[191px] md:w-full w-3/4")
-    }
-  }
+  const [logoSize, setLogoSize] = useState("sm:w-4/5 w-3/5")
 
   useEffect(() => {
+    function handleLogoSize() {
+      if (window.scrollY > 0) {
+        setLogoSize("sm:w-3/5 w-2/5")
+      } else {
+        setLogoSize("sm:w-4/5 w-3/5")
+      }
+    }
+
     window.addEventListener("scroll", handleLogoSize)
 
     return () => {
       window.removeEventListener("scroll", handleLogoSize)
     }
-  }, [handleLogoSize])
+  }, [])
 
   const toggleSideMenu = (() => {
     const aside = document.getElementById("aside")

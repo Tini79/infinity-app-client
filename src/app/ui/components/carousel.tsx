@@ -91,7 +91,7 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
     return () => {
       window.addEventListener("resize", handleResize)
     }
-  }, [counts, isStartLimit, isEndLimit, temptWindowWidth, currWindowWidth, carouselContainer, carouselChildrenCounts, temptItemDisplayed, currItemDisplayed])
+  }, [counts, isStartLimit, isEndLimit, temptWindowWidth, currWindowWidth, carouselContainer, carouselChildrenCounts, itemDisplayed, temptItemDisplayed, currItemDisplayed])
 
   // GENERAL
   if (carouselChildrenCounts) {

@@ -1,15 +1,15 @@
 "use client"
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import { NavigationContext } from "../ui/components/navigationProvider"
 
 export function getLoginToken() {
   if (typeof window != "undefined" && window.localStorage) {
     const [token, setToken] = useState<any>(null)
     // let token = 
-    useEffect(() => {
+    // useEffect(() => {
       let lSTOken = localStorage.getItem("token")
       setToken(lSTOken)
-    }, [])
+    // }, [])
     
     return token == "null" ? null : token
   }

@@ -13,8 +13,8 @@ export async function getCategories() {
     //   headers: headers
     // }
 
-    // const { data } = await axios.get("http://localhost:3200/categories", options)
-    const { data } = await axios.get("http://localhost:3200/categories")
+    // const { data } = await axios.get("http://localhost:3200/api/v1/categories", options)
+    const { data } = await axios.get("http://localhost:3200/api/v1/categories")
     return data.data
   } catch (error) {
     console.error('Database Error:', error);
@@ -24,7 +24,7 @@ export async function getCategories() {
 
 export async function getPopularCategories() {
   try {
-    const { data } = await axios.get("http://localhost:3200/popular-categories")
+    const { data } = await axios.get("http://localhost:3200/api/v1/popular-categories")
     return data.data
   } catch (error) {
     console.error('Database Error:', error);
@@ -34,7 +34,7 @@ export async function getPopularCategories() {
 
 export async function getTestimonials() {
   try {
-    const { data } = await axios.get("http://localhost:3200/testimonials")
+    const { data } = await axios.get("http://localhost:3200/api/v1/testimonials")
     return data.data
   } catch (error) {
     console.error('Database Error:', error);
@@ -44,7 +44,7 @@ export async function getTestimonials() {
 
 export async function getProductsByCategory(slug: string) {
   try {
-    const { data } = await axios.get(`http://localhost:3200/category/${slug}`)
+    const { data } = await axios.get(`http://localhost:3200/api/v1/category/${slug}`)
     return data.data
   } catch (error) {
     console.error('Database Error:', error);
@@ -54,7 +54,7 @@ export async function getProductsByCategory(slug: string) {
 
 export async function getCountries() {
   try {
-    const { data } = await axios.get("http://localhost:3200/countries")
+    const { data } = await axios.get("http://localhost:3200/api/v1/countries")
     return data.data
   } catch (error) {
     console.error('Database Error:', error);

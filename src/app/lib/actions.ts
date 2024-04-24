@@ -35,7 +35,7 @@ export async function registerUser(formData: FormData) {
     }
 
     // TODO: dari depan hash juga passnya klo bisa
-    const { data } = await axios.post("http://localhost:3200/registration", insertedData)
+    const { data } = await axios.post("http://localhost:3200/api/v1/registration", insertedData)
     if (data.statusCode == 200) {
       // TODO: coba pelajari lagi soal revalidatePath ini 
       revalidatePath("/login")
@@ -60,7 +60,7 @@ export async function loginUser(currState: any, formData: FormData) {
       return
     }
 
-    const { data } = await axios.post("http://localhost:3200/login", insertedData)
+    const { data } = await axios.post("http://localhost:3200/api/v1/login", insertedData)
     if (data.statusCode == 200) {
       revalidatePath("/")
       return data.data

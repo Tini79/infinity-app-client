@@ -19,9 +19,9 @@ export default async function Category({ params }: { params: { slug: string } })
   ]
   // TODO: masih data dummy, soalnya belum ada foto nig
   const images = [
-    { name: "Sandalwood", path: "imgs/carousel-1.jpg", desc: "We choose sandalwood because it has become a spiritual wood in Bali. In some ceremonies, sandalwood is used to symbolize the relationship between humans, nature, and the environment (balance of nature).", href: "/category" },
-    { name: "The Balinese Charm", path: "imgs/carousel-1.jpg", desc: "This charm embodies various Balinese values, such as strength, acceptance, reincarnation, balance, faith, appreciation, love, beauty, and wisdom.", href: "/category" },
-    { name: "Color Beads, Gemnstones, Glass and Crystals", path: "imgs/carousel-1.jpg", desc: "These materials are inspired by the relationship between humans. They represent the creative expressions and shared emotions that bring people together, creating something captivating to the eye.", href: "/category" },
+    { name: "Sandalwood", path: "imgs/tri-hita-karana-bracelets.jpg", desc: "We choose sandalwood because it has become a spiritual wood in Bali. In some ceremonies, sandalwood is used to symbolize the relationship between humans, nature, and the environment (balance of nature).", href: "/category" },
+    { name: "The Balinese Charm", path: "imgs/tri-hita-karana-bracelets.jpg", desc: "This charm embodies various Balinese values, such as strength, acceptance, reincarnation, balance, faith, appreciation, love, beauty, and wisdom.", href: "/category" },
+    { name: "Color Beads, Gemnstones, Glass and Crystals", path: "imgs/tri-hita-karana-bracelets.jpg", desc: "These materials are inspired by the relationship between humans. They represent the creative expressions and shared emotions that bring people together, creating something captivating to the eye.", href: "/category" },
   ]
   const DynamicCarousel = dynamic(() => import("../../../ui/components/carousel"), { ssr: false })
 
@@ -72,12 +72,13 @@ export default async function Category({ params }: { params: { slug: string } })
           <span className={`${crimsonText.className} lg:text-[32px] sm:text-[30px] text-[28px] !font-bold`}>All Products</span>
         </div>
         <div className="lg:mb-7 mb-[21px] flex">
+          {/* TODO: image selection to change the image, belum work ni cuk! */}
           {/* {images.map((image, index) => ( */}
           <article>
             <section>
               <div className="md:flex lg:gap-8 xs:gap-4 items-center">
                 <div className="flex-initial md:w-1/2">
-                  <Image src="/imgs/carousel-1.jpg" alt="" width={550} height={464} className="md:w-full w-[90%] mx-auto lg:h-[464px] md:h-[300px] md:mb-0 mb-2 object-cover" />
+                  <Image src="/imgs/tri-hita-karana-bracelets.jpg" alt="" width={550} height={464} className="md:w-full w-[90%] mx-auto lg:h-[464px] md:h-[300px] md:mb-0 mb-2 object-cover" />
                 </div>
                 <div className="flex-initial md:w-1/2 w-[90%] mx-auto">
                   <div>

@@ -8,8 +8,9 @@
   margin: 0;
 }
 
+/* TODO: bikin ini hanya aktif di homepage doang aka yg perlu doang, ini pakai html malah semua page kena */
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
 }
 
 .carousel-container::-webkit-scrollbar {
@@ -25,7 +26,7 @@ button:disabled .slider-icon {
   color: rgba(103, 88, 35, 0.5);
 }
 
-button.center-slider:disabled  {
+button.center-slider:disabled {
   background-color: rgba(103, 88, 35, 0.5);
 }
 

@@ -13,7 +13,6 @@ export async function getCategories() {
     //   headers: headers
     // }
 
-    // const { data } = await axios.get("http://localhost:3200/api/v1/categories", options)
     const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/categories`)
     return data.data
   } catch (error) {
@@ -43,6 +42,8 @@ export async function getTestimonials() {
 }
 
 export async function getProductsByCategory(slug: string) {
+  console.log('ghhhj');
+  
   try {
     const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/category/${slug}`)
     return data.data

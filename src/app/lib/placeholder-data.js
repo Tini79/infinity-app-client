@@ -47,7 +47,52 @@ const navMenus = [
   },
 ]
 
+const categories = [
+  {
+    name: "Tri Hita Karana Bracelets",
+    href: "tri-hita-karana-bracelets"
+  },
+  {
+    name: "Red String Bracelets",
+    href: "red-string-bracelets"
+  },
+  {
+    name: "Chipstone Bracelets",
+    href: "chipstone-bracelets"
+  }
+]
+
+const materialDescTitle = [{
+  "triHitaKaranaBracelets": "The Tri Hita Karana bracelets is crafted with mindful attention to the Balinese philosophy, reflected in the materials we choose."
+}]
+
+const triHitaKarana = [
+  {
+    "id": 1,
+    "name": "Parahyangan",
+    "desc": "Harmony between humans and the divine"
+  },
+  {
+    "id": 2,
+    "name": "Pawongan",
+    "desc": "Harmony between humans and other humans"
+  },
+  {
+    "id": 3,
+    "name": "Palemahan",
+    "desc": "Harmony between humans and nature"
+  },
+]
+
+const slug = [
+  { "triHitaKaranaBracelets": "tri-hita-karana-bracelets" }
+]
+
 module.exports = {
   contacts,
-  navMenus
+  navMenus,
+  categories,
+  materialDescTitle,
+  triHitaKarana,
+  slug
 }

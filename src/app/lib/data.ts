@@ -13,7 +13,7 @@ export async function getCategories() {
     //   headers: headers
     // }
 
-    const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/categories`)
+    const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/categories`)    
     return data.data
   } catch (error) {
     console.error('Database Error:', error);
@@ -42,8 +42,6 @@ export async function getTestimonials() {
 }
 
 export async function getProductsByCategory(slug: string) {
-  console.log('ghhhj');
-  
   try {
     const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/category/${slug}`)
     return data.data

@@ -2,8 +2,7 @@
 import Link from "next/link";
 import Image from "next/image"
 import { faBars, faClose, faUser } from "@fortawesome/free-solid-svg-icons";
-import NavLinks from "./navlinks";
-import clsx from "clsx";
+import NavLinks from "../navlinks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 
@@ -53,6 +52,7 @@ export default function Navbar() {
                 </li>
               ))}
               <li>
+                {/* TODO: ubah ke logout */}
                 <Link href="/login">
                   <FontAwesomeIcon icon={faUser} className="w-3.5 text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center"></FontAwesomeIcon>
                 </Link>

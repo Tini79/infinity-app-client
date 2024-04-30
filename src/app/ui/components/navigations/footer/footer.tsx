@@ -1,13 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-import NavLinks from "./navbar/navlinks";
+import NavLinks from "../navlinks";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 
-export default function Footer() {
-  const { contacts, navMenus } = require("@/app/lib/placeholder-data")
-
-  const categories = [
-    { name: "Tri Hita Karana Bracelets", href: "/" },
-  ]
+export default async function Footer() {
+  const { contacts, navMenus, categories } = require("@/app/lib/placeholder-data")
 
   return (
     <>
@@ -27,6 +25,19 @@ export default function Footer() {
           <span className="lg:text-sm sm:text-xs text-[10px]">&copy; 2024️ <Link href="/" className="hover:text-bs-secondary--darker">Infinity Pritty Jewellery</Link>. All rights reserved</span>
         </div>
       </footer>
+      <div className="w-full flex justify-between fixed lg:bottom-4 sm:bottom-3 bottom-2 lg:px-5 sm:px-[15px] px-2.5">
+        <div className="flex items-center justify-center bg-bs-primary--darker p-2 box-content w-10 h-10 rounded-full z-10 shadow-[0_1px_8px_1px_rgba(0,0,0,0.25)]">
+          <Link href={contacts[2].href} className="">
+            <FontAwesomeIcon icon={contacts[2].icon} className="text-4xl  text-bs-secondary--lighter hover:text-bs-secondary--darker"></FontAwesomeIcon>
+          </Link>
+        </div>
+        <div className="flex items-center justify-center bg-white p-2 box-content w-20 h-8 rounded-full z-10 shadow-[0_1px_8px_1px_rgba(0,0,0,0.25)]">
+          <Link href={contacts[2].href} className=" flex items-center text-bs-fourth hover:text-bs-third">
+            <FontAwesomeIcon icon={faQuestion} className="text-lg"></FontAwesomeIcon>
+            <span className="ml-2 font-semibold">Help</span>
+          </Link>
+        </div>
+      </div>
     </>
   )
 }

@@ -9,8 +9,8 @@ import { useFormState } from "react-dom";
 
 export default function Login() {
   const [state, formAction] = useFormState(loginUser, null)
-  handleSave(state)
   if (state) {
+    handleSave(state.token)
     redirect("/")
   }
   return (

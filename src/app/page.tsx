@@ -1,18 +1,21 @@
 import Image from "next/image";
 import { crimsonText } from "@/app/ui/fonts";
-import Carousel from "@/app/ui/components/carousel";
 import Description from "@/app/ui/components/description";
-import Link from "next/link";
 import Button from "@/app/ui/components/button";
 import Hero from "@/app/ui/components/hero";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons/faStar";
 import { getCategories, getPopularCategories, getTestimonials } from "./lib/data";
 import dynamic from "next/dynamic";
+
 // TODO: coba lagi check pada carousel n testi: height foto tidak sesuai dg design
 export default async function Home() {
   const categories = await getCategories()
-  const popularCategories = await getPopularCategories()
+  const popCategories = await getPopularCategories()
+  const displayedPopCategories = []
+  for (let i = 0; i < popCategories.length; i++) {
+    if (popCategories[i].total_rate) {
+      displayedPopCategories.push(popCategories[i])
+    }
+  }
   const testimonials = await getTestimonials()
   const DynamicCarousel = dynamic(() => import("./ui/components/carousel"), { ssr: false })
 
@@ -31,7 +34,7 @@ export default async function Home() {
         </div>
       </section>
       <section className="px-10 lg:py-[100px] sm:py-[75px] py-[50px]">
-        <DynamicCarousel id="popularThisWeek" title="Popular This Week" isCategory data={popularCategories} />
+        <DynamicCarousel id="popularThisWeek" title="Popular This Week" isCategory data={displayedPopCategories} />
       </section>
       <Description isBgPrimary={false} title="Beyond the Beaches: Discover Bali’s Exquisite Jewelry" desc="Beyond its stunning beaches and vibrant culture, Bali, the captivating Indonesian island, boasts a rich tradition of handcrafted jewelry making that incorporates elements of Hinduism, local folklore, and nature. Balinese authentic jewelry is known for its intricate craftsmanship, unique designs, and deep cultural significance." />
       {/* design introduction */}

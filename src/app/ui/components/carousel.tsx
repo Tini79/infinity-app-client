@@ -43,8 +43,6 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
       return [3, 2, 2, 1, 1]
     } else if (isProduct) {
       return [4, 3, 3, 2, 2]
-    } else if (isAllCategories) {
-      return [2, 2, 2, 2, 1]
     } else if (isTestimonials) {
       return [3, 3, 2, 2, 1]
     } else {
@@ -158,11 +156,11 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
             </div>
           </>
         )}
-        {((isCategory || isProduct || isAllCategories) && showSliderBtn) && (
+        {((isCategory || isProduct) && showSliderBtn) && (
           <>
             <div className="flex-initial w-1/4 flex justify-end lg:gap-5 sm:gap-[15px] gap-2.5">
-              <button disabled={isStartLimit} onClick={() => onClickSlider(false)}><FontAwesomeIcon icon={faCircleChevronLeft} className={clsx("slider-icon lg:text-2xl sm:text-[22px] text-xl text-bs-third--lighter hover:text-bs-third", { "text-white text-opacity-50 hover:text-bs-third": isAllCategories })} /></button>
-              <button disabled={isEndLimit} onClick={() => onClickSlider(true)}><FontAwesomeIcon icon={faCircleChevronRight} className={clsx("slider-icon lg:text-2xl sm:text-[22px] text-xl text-bs-third--lighter hover:text-bs-third", { "text-white text-opacity-50 hover:text-bs-third": isAllCategories })} /></button>
+              <button disabled={isStartLimit} onClick={() => onClickSlider(false)}><FontAwesomeIcon icon={faCircleChevronLeft} className="slider-icon lg:text-2xl sm:text-[22px] text-xl text-bs-third--lighter hover:text-bs-third" /></button>
+              <button disabled={isEndLimit} onClick={() => onClickSlider(true)}><FontAwesomeIcon icon={faCircleChevronRight} className="slider-icon lg:text-2xl sm:text-[22px] text-xl text-bs-third--lighter hover:text-bs-third" /></button>
             </div>
           </>
         )}
@@ -170,8 +168,8 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
       {/* the sliders */}
       {/* <div> */}
       {/* TODO: kalo mau bikin slider pada Product Categories section "overflow-x-scroll": isAllCategories, */}
-      <div className={clsx("mx-auto", { "w-full overflow-x-hidden": isCategory || isProduct || isAllProducts || isAllCategories || isTestimonials, "carousel-container relative": isCategory || isProduct || isAllProducts || isAllCategories || isTestimonials, "xl:h-[274px] lg:h-[284px] md:h-[220px] xs:h-[324px] h-[214px]": isCategory, "xl:h-[368px] lg:h-[368px] md:h-[308px] sm:h-[344px] xs:h-[274px] h-[254px]": isProduct, "xl:h-[137px] md:h-[142px] xs:h-[162px] h-[117px]": isAllProducts, "xl:h-[480px] md:h-[440px] sm:h-[380px] h-[400px] xs:h-[338px]": isTestimonials, "xl:h-[338px] lg:h-[300px] md:h-[250px] sm:h-[188px] xs:h-[316px] h-[200px] lg:mt-10 sm:mt-[30px] mt-5": isAllCategories })}>
-        <div id={`carouselContainer-${id}`} className={clsx({ "absolute flex h-full": isCategory || isProduct || isAllProducts || isAllCategories || isTestimonials, "md:gap-4 gap-2": isCategory || isProduct, "grid lg:gap-[50px] sm:gap-[30px] xs:gap-[25px] gap-5 lg:grid-cols-3 grid-cols-2": !isCategory && !isProduct && !isAllProducts && !isAllCategories && !isTestimonials, "flex lg:gap-x-3 gap-x-1.5": isAllProducts, "md:gap-5 gap-2.5": isAllCategories, "lg:gap-x-[30px] gap-x-[15px] py-1": isTestimonials })}>
+      <div className={clsx("mx-auto", { "w-full overflow-x-hidden": isCategory || isProduct || isAllProducts || isTestimonials, "carousel-container relative": isCategory || isProduct || isAllProducts || isTestimonials, "xl:h-[274px] lg:h-[284px] md:h-[220px] xs:h-[324px] h-[214px]": isCategory, "xl:h-[368px] lg:h-[368px] md:h-[308px] sm:h-[344px] xs:h-[274px] h-[254px]": isProduct, "xl:h-[137px] md:h-[142px] xs:h-[162px] h-[117px]": isAllProducts, "xl:h-[480px] md:h-[440px] sm:h-[380px] h-[400px] xs:h-[338px]": isTestimonials, "lg:mt-10 sm:mt-[30px] mt-5": isAllCategories })}>
+        <div id={`carouselContainer-${id}`} className={clsx({ "absolute flex h-full": isCategory || isProduct || isAllProducts || isTestimonials, "md:gap-4 gap-2": isCategory || isProduct || isAllCategories, "grid lg:gap-[50px] sm:gap-[30px] xs:gap-[25px] gap-5 lg:grid-cols-3 grid-cols-2": !isCategory && !isProduct && !isAllProducts && !isAllCategories && !isTestimonials, "flex lg:gap-x-3 gap-x-1.5": isAllProducts, "grid sm:grid-cols-2 grid-cols-1": isAllCategories, "lg:gap-x-[30px] gap-x-[15px] py-1": isTestimonials })}>
           {data.map((image: any, i: number) => isCategory ? (
             <>
               {/* TODO: unique */}
@@ -224,7 +222,8 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
           ) : (isAllCategories ? (
             <>
               {/* TODO: bikin unique */}
-              <div key={`allcategories${i}`} className="relative md:w-[calc((100vw-100px)/2)] sm:w-[calc((100vw-50px)/2)] w-[calc(100vw-40px)] h-full" onMouseEnter={() => handleHover(i)} onMouseLeave={() => { handleHover(null) }}>
+              {/*  xl:w-[calc((100vw-112px)/3)] lg:w-[calc((100vw-96px)/2)] md:w-[calc((100vw-76px)/2)] sm:w-[calc((100vw-60px))] w-[calc((100vw-40px))] */}
+              <div key={`allcategories${i}`} className="relative xl:h-[338px] lg:h-[300px] md:h-[230px] sm:h-[188px] xs:h-[316px] h-[200px]" onMouseEnter={() => handleHover(i)} onMouseLeave={() => { handleHover(null) }}>
                 <Link href={`category/${image.href}`}>
                   <span className={clsx("absolute w-full h-full bg-bs-fourth top-0 bg-opacity-[56%]", currDisplays[i])}></span>
                   <Image src={`/${image.path}`} alt={image.name} width={590} height={338} className="w-full h-full object-cover"></Image>
@@ -295,9 +294,9 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
             </button>
           </div> */}
           <div className="lg:mt-5 sm:mt-[15px] mt-2.5 flex w-full justify-end lg:gap-5 sm:gap-[15px] gap-2.5">
-              <button disabled={isStartLimit} onClick={() => onClickSlider(false)}><FontAwesomeIcon icon={faCircleChevronLeft} className={clsx("slider-icon lg:text-2xl sm:text-[22px] text-xl text-bs-third--lighter hover:text-bs-third", { "text-white text-opacity-50 hover:text-bs-third": isAllCategories })} /></button>
-              <button disabled={isEndLimit} onClick={() => onClickSlider(true)}><FontAwesomeIcon icon={faCircleChevronRight} className={clsx("slider-icon lg:text-2xl sm:text-[22px] text-xl text-bs-third--lighter hover:text-bs-third", { "text-white text-opacity-50 hover:text-bs-third": isAllCategories })} /></button>
-            </div>
+            <button disabled={isStartLimit} onClick={() => onClickSlider(false)}><FontAwesomeIcon icon={faCircleChevronLeft} className="slider-icon lg:text-2xl sm:text-[22px] text-xl text-bs-third--lighter hover:text-bs-third" /></button>
+            <button disabled={isEndLimit} onClick={() => onClickSlider(true)}><FontAwesomeIcon icon={faCircleChevronRight} className="slider-icon lg:text-2xl sm:text-[22px] text-xl text-bs-third--lighter hover:text-bs-third" /></button>
+          </div>
         </>
       )}
     </>

@@ -7,7 +7,7 @@ import ProductsCarousel from "@/app/ui/components/home/products-carousel";
 import dynamic from "next/dynamic";
 import ProductSection from "@/app/ui/components/slug/product-section";
 
-export default async function Category({ params }: { params: { slug: string } }) {
+export default async function Category({ params }: { params: { slug: string } }) {  
   const imageUrl = `/imgs/categories/${params.slug}.jpg`;
   const products = await getProductsByCategory(params.slug)
   const { materialDescTitle, triHitaKarana, slug } = require("@/app/lib/placeholder-data")
@@ -17,7 +17,12 @@ export default async function Category({ params }: { params: { slug: string } })
       mostPopProducts.push(products.details[i])
     }
   }
-  const anotherCategories = await getCategories()
+  const categories = await getCategories()
+  const anotherCategories = []
+  
+  for (let i = 0; i < categories.length; i++) {
+    if (!(categories[i].slug == params.slug)) anotherCategories.push(categories[i])
+  }
   const DynamicCarousel = dynamic(() => import("../../../ui/components/carousel"), { ssr: false })
   const titleArr = products.data.name.split(' ')
   const subTitle = titleArr[titleArr.length - 1]
@@ -56,7 +61,7 @@ export default async function Category({ params }: { params: { slug: string } })
           </div>
         </div>
       </section>
-      <Description customSectionCls="lg:mb-20 sm:mb-[60px] mb-10 " isBgPrimary={false} hasCarousel title={params.slug == slug[0].triHitaKaranaBracelets ? materialDescTitle[0].triHitaKaranaBracelets : ""}>
+      <Description customSectionCls="lg:mb-20 sm:mb-[60px] mb-10 " isBgPrimary={false} hasCarousel title={params.slug == slug[0].triHitaKaranaBracelets ? materialDescTitle[0].triHitaKaranaBracelets : params.slug == slug[0].chipstoneBracelets ? materialDescTitle[0].chipstoneBracelets : ""}>
         <DynamicCarousel id="description" data={products.materials} />
       </Description>
       <ProductsCarousel id="mostPopular" title="Most Popular" data={mostPopProducts} isProduct custCls="sm:py-20 py-10 bg-bs-fourth bg-opacity-[2%]" />

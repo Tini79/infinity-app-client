@@ -62,9 +62,12 @@ const categories = [
   }
 ]
 
-const materialDescTitle = [{
-  "triHitaKaranaBracelets": "The Tri Hita Karana bracelets is crafted with mindful attention to the Balinese philosophy, reflected in the materials we choose."
-}]
+const materialDescTitle = [
+  {
+    "triHitaKaranaBracelets": "The Tri Hita Karana bracelets is crafted with mindful attention to the Balinese philosophy, reflected in the materials we choose.",
+    "chipstoneBracelets": "The Chipstone bracelets may feature a variety of natural stones, each with its unique properties"
+  }
+]
 
 const triHitaKarana = [
   {
@@ -85,7 +88,10 @@ const triHitaKarana = [
 ]
 
 const slug = [
-  { "triHitaKaranaBracelets": "tri-hita-karana-bracelets" }
+  {
+    "triHitaKaranaBracelets": "tri-hita-karana-bracelets",
+    "chipstoneBracelets": "chipstone-bracelets"
+  }
 ]
 
 module.exports = {

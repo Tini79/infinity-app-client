@@ -127,7 +127,7 @@ export default function Navbar() {
             </div >
             <Link href={navMenus[0].href} className="flex justify-center mx-auto">
               {/* TODO: bagusnya di laptoku: width={131} height={31} */}
-              <Image id="navbarLogo" src="/imgs/brand-logo-darker.png" alt="Infinity Pritty Jewellery Logo" width={191} height={91} className={logoSize} />
+              <Image id="navbarLogo" src="/imgs/brand-logo-darker.png" alt="Infinity Pritty Jewellery Logo" width={191} height={91} className={logoSize} priority />
             </Link>
             <div className="hidden sm:flex flex-1 justify-end items-center lg:gap-10 gap-5">
               {navMenus.map((menu: any, i: number) => i > 1 && (

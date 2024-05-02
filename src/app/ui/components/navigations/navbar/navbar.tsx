@@ -1,10 +1,13 @@
 "use client"
 import Link from "next/link";
 import Image from "next/image"
-import { faBars, faClose, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faClose, faRightFromBracket, faUser } from "@fortawesome/free-solid-svg-icons";
 import NavLinks from "../navlinks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
+import { logout } from "@/app/lib/actions";
+import { redirect } from "next/navigation";
+import { saveAuthStatus, useAuthStatus } from "@/app/lib/config";
 
 export default function Navbar() {
   const { contacts, navMenus } = require("@/app/lib/placeholder-data")
@@ -52,10 +55,25 @@ export default function Navbar() {
                 </li>
               ))}
               <li>
-                {/* TODO: ubah ke logout */}
-                <Link href="/login">
-                  <FontAwesomeIcon icon={faUser} className="w-3.5 text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center"></FontAwesomeIcon>
-                </Link>
+                {useAuthStatus() ? (
+                  <>
+                    <form action={async () => {
+                      await logout()
+                      saveAuthStatus(false)
+                      redirect("/")
+                    }}>
+                      <button type="submit" className="flex items-center">
+                        <FontAwesomeIcon icon={faRightFromBracket} className="text-sm text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center"></FontAwesomeIcon>
+                      </button>
+                    </form>
+                  </>
+                ) : (
+                  <>
+                    <Link href="/login">
+                      <FontAwesomeIcon icon={faUser} className="text-sm text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center"></FontAwesomeIcon>
+                    </Link>
+                  </>
+                )}
               </li>
             </ul>
             {/* mobile */}
@@ -71,24 +89,42 @@ export default function Navbar() {
                 </li>
               ))}
               <li>
-                <NavLinks icon={faUser} href="/login" customCls="lg:w-3.5 sm:w-3 w-2.5 text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center" />
+                {useAuthStatus() ? (
+                  <>
+                    <form action={async () => {
+                      await logout()
+                      saveAuthStatus(false)
+                      redirect("/")
+                    }}>
+                      <button type="submit" className="flex items-center">
+                        <FontAwesomeIcon icon={faRightFromBracket} className="lg:text-sm sm:text-xs text-[10px] text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center"></FontAwesomeIcon>
+                      </button>
+                    </form>
+                  </>
+                ) : (
+                  <>
+                    <NavLinks icon={faUser} href="/login" customCls="lg:text-sm sm:text-xs text-[10px] text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center" />
+                  </>
+                )}
               </li>
             </ul>
-          </div>
+          </div >
           {/* main navigation */}
-          <div className="flex items-center lg:px-10 sm:px-[30px] px-5 lg:py-2 py-1 bg-white relative">
+          < div className="flex items-center lg:px-10 sm:px-[30px] px-5 lg:py-2 py-1 bg-white relative" >
             {/* desktop, laptop, tablet */}
-            <div className="hidden sm:flex items-center flex-1 lg:gap-10 gap-5">
-              {navMenus.map((menu: any, i: number) => i <= 1 && (
-                <Link
-                  key={i}
-                  href={menu.href}
-                  className="lg:text-base sm:text-sm text-bs-fourth hover:text-bs-third uppercase font-medium"
-                >
-                  {menu.name}
-                </Link>
-              ))}
-            </div>
+            < div className="hidden sm:flex items-center flex-1 lg:gap-10 gap-5" >
+              {
+                navMenus.map((menu: any, i: number) => i <= 1 && (
+                  <Link
+                    key={i}
+                    href={menu.href}
+                    className="lg:text-base sm:text-sm text-bs-fourth hover:text-bs-third uppercase font-medium"
+                  >
+                    {menu.name}
+                  </Link>
+                ))
+              }
+            </div >
             <Link href={navMenus[0].href} className="flex justify-center mx-auto">
               {/* TODO: bagusnya di laptoku: width={131} height={31} */}
               <Image id="navbarLogo" src="/imgs/brand-logo-darker.png" alt="Infinity Pritty Jewellery Logo" width={191} height={91} className={logoSize} />
@@ -106,16 +142,16 @@ export default function Navbar() {
             </div>
             <div className="sm:hidden absolute right-5 ">
               <button onClick={toggleSideMenu}>
-                <FontAwesomeIcon icon={faBars} className="w-3.5 text-bs-fourth hover:text-bs-third"></FontAwesomeIcon>
+                <FontAwesomeIcon icon={faBars} className="text-sm text-bs-fourth hover:text-bs-third"></FontAwesomeIcon>
               </button>
             </div>
-          </div>
-        </nav>
-      </header>
+          </div >
+        </nav >
+      </header >
       <aside id="aside" className="bg-bs-primary--darker p-5 w-full h-full fixed overflow-hidden z-10 sm:hidden -left-full">
         <div className="flex justify-end">
           <button onClick={toggleSideMenu}>
-            <FontAwesomeIcon icon={faClose} className="w-3.5 text-bs-secondary--lighter hover:text-bs-secondary--darker" />
+            <FontAwesomeIcon icon={faClose} className="text-sm text-bs-secondary--lighter hover:text-bs-secondary--darker" />
           </button>
         </div>
         <div>

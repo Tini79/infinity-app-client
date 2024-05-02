@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link";
 import { useContext, useState } from "react";
-import { NavigationContext } from "./navigationProvider";
+import { GlobalContext } from "../../../context/navigation-provider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBasketShopping } from "@fortawesome/free-solid-svg-icons";
 // TODO: boleh nanti tambahin props buat nampung text nih ama link and so on
@@ -10,7 +10,7 @@ interface ButtonProps {
   isAuth?: boolean
 }
 export default function Button({ btnType, isAuth = false }: ButtonProps) {
-  const pathname = useContext(NavigationContext)
+  const { pathname } = useContext(GlobalContext)
   const { contacts } = require("@/app/lib/placeholder-data")
   const [showOrderDetail, setShowOrderDetail] = useState(false)
   const [orderAmount, setOrderAmount] = useState(0)

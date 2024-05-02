@@ -1,8 +1,8 @@
 "use client"
-import { useLoginToken } from "@/app/lib/config";
-import Carousel from "../carousel";
+import { useAuthStatus } from "@/app/lib/config";
 import clsx from "clsx";
 import dynamic from "next/dynamic";
+
 
 interface ProductCarouselProps {
   id: string,
@@ -20,13 +20,13 @@ export default function ProductsCarousel({
   isProduct,
   productCardCls,
   custCls, }: ProductCarouselProps) {
-  let token = useLoginToken()
   const DynamicCarousel = dynamic(() => import("../carousel"), {ssr: false})
-
+// TODO: belum ada token
+let token = ""
   return (
     <>
       <section className={clsx("lg:px-10 sm:px-[30px] px-5", custCls)}>
-        <DynamicCarousel id={id} title={title} data={data} isProduct={isProduct} productCardCls={productCardCls} token={token} />
+        <DynamicCarousel id={id} title={title} data={data} isProduct={isProduct} productCardCls={productCardCls} isAuth={useAuthStatus()} />
       </section>
     </>
   )

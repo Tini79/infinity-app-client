@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { montserrat } from "@/app/ui/fonts";
 import "@/app/ui/globals.css";
-import NavigationProvider from "./ui/components/navigationProvider";
+import NavigationProvider from "../context/navigation-provider";
 
 export const metadata: Metadata = {
   title: "Infinity Pritty Jewellery",

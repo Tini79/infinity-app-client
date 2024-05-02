@@ -18,12 +18,12 @@ interface CarouselProps {
   isAllCategories?: boolean,
   isTestimonials?: boolean,
   productCardCls?: string,
-  token?: any,
+  isAuth?: any,
   slug?: string,
   sendProduct?: any
 }
 
-export default function Carousel({ id, title, data, isCategory = false, isProduct = false, isAllProducts = false, isAllCategories = false, isTestimonials = false, productCardCls = "", token = null, slug, sendProduct }: CarouselProps) {
+export default function Carousel({ id, title, data, isCategory = false, isProduct = false, isAllProducts = false, isAllCategories = false, isTestimonials = false, productCardCls = "", isAuth = null, slug, sendProduct }: CarouselProps) {
   const [currWindowWidth, setCurrWindowWidth] = useState(window.innerWidth)
   const displays: any = []
   const [isStartLimit, setIsStartLimit] = useState(true)
@@ -110,7 +110,6 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
 
   const onClickSlider = ((isNext: boolean) => {
     if (carouselContainer?.children[0] instanceof HTMLElement && carouselContainer?.children[1] instanceof HTMLElement && carouselChildrenCounts) {
-      console.log('hhhh');
 
       const gapValue = carouselContainer?.children[1].offsetLeft - carouselContainer?.children[0].offsetWidth
       carouselContainer.style.left = isNext ? `${carouselContainer.offsetLeft - (carouselContainer?.children[0].offsetWidth + gapValue)}px` : `${carouselContainer.offsetLeft + (carouselContainer?.children[0].offsetWidth + gapValue)}px`
@@ -199,7 +198,7 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
                   </div>
                   <div className="lg:mb-4 sm:mb-3 mb-2">
                     <h4 className={`${crimsonText.className} lg:text-lg sm:text-base text-sm !leading-tight !font-bold lg:mb-2 sm:mb-1.5 mb-1`}>{image.name}</h4>
-                    {token ? (
+                    {isAuth ? (
                       // TODO: incase ada diskon: yg atas untuk harga normal, yg bawah harga diskon
                       // {/* <s className="lg:text-[14px] sm:text-[12px] text-[10px] text-bs-fourth tracking-[1px] opacity-50">$222&nbsp;</s> */}
                       // TODO: mata uang ($) masih statis
@@ -210,7 +209,7 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
                   </div>
                   <div className="absolute w-full bottom-0">
                     {/* TODO: mungkin ini nanti jadiin config kayak sistem cakra, kan di localstorage itu diubah */}
-                    {token ? (
+                    {isAuth ? (
                       <Button btnType="btn-product" isAuth />
                     ) : (
                       <Button btnType="btn-product" />

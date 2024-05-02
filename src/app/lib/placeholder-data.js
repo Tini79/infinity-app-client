@@ -7,7 +7,7 @@ const contacts = [
     href: "+62881038440302",
     value: "+62 881-0384-40302",
     isPhone: true,
-    name: "+62 8810 3844 0302"
+    name: "+62 877 3550 4031"
   },
   {
     icon: faEnvelope,
@@ -18,8 +18,8 @@ const contacts = [
   },
   {
     icon: faWhatsapp,
-    href: "https://wa.me/+62881038440302",
-    name: "+62 8810 3844 0302"
+    href: "https://wa.me/+6287735504031",
+    name: "+62 877 3550 4031"
   },
   {
     icon: faInstagram,

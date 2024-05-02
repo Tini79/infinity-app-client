@@ -5,6 +5,7 @@ import Button from "../button";
 import Image from "next/image"
 import dynamic from "next/dynamic";
 import Carousel from "../carousel";
+import { useGlobalContext } from "../../../../context/navigation-provider";
 interface ProductSectionProps {
   products: any,
 }
@@ -12,14 +13,16 @@ interface ProductSectionProps {
 export default function ProductSection({ products }: ProductSectionProps) {
   const [selectedProduct, setSelectedProduct] = useState(products.details[0])
   // const DynamicCarousel = dynamic(() => import("../../../ui/components/carousel"), { ssr: false })
-
+  const { isAuth } = useGlobalContext()
   const changeProduct = (productCode: string) => {
     const data = products.details.find((el: any) => el.code == productCode)
     setSelectedProduct(data)
   }
+  console.log(isAuth, 'dari slug');
 
   return (
     <>
+      {isAuth}
       <section className="lg:px-10 sm:px-[30px] px-5 sm:py-20 py-10">
         <div className="lg:mb-6 sm:mb-[18px] mb-3">
           <span className={`${crimsonText.className} lg:text-[32px] sm:text-[30px] text-[28px] !font-bold`}>All Products</span>

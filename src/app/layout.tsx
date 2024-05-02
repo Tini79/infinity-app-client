@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { montserrat } from "@/app/ui/fonts";
 import "@/app/ui/globals.css";
 import NavigationProvider from "../context/navigation-provider";
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import { config } from '@fortawesome/fontawesome-svg-core';
+config.autoAddCss = false; /* eslint-disable import/first */
 
 export const metadata: Metadata = {
   title: "Infinity Pritty Jewellery",

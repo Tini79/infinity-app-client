@@ -167,7 +167,7 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
       {/* the sliders */}
       {/* <div> */}
       {/* TODO: kalo mau bikin slider pada Product Categories section "overflow-x-scroll": isAllCategories, */}
-      <div className={clsx("mx-auto", { "w-full overflow-x-hidden": isCategory || isProduct || isAllProducts || isTestimonials, "carousel-container relative": isCategory || isProduct || isAllProducts || isTestimonials, "xl:h-[274px] lg:h-[284px] md:h-[220px] xs:h-[324px] h-[214px]": isCategory, "xl:h-[368px] lg:h-[368px] md:h-[308px] sm:h-[344px] xs:h-[274px] h-[254px]": isProduct, "xl:h-[137px] md:h-[142px] xs:h-[162px] h-[117px]": isAllProducts, "xl:h-[480px] md:h-[440px] sm:h-[380px] h-[400px] xs:h-[338px]": isTestimonials, "lg:mt-10 sm:mt-[30px] mt-5": isAllCategories })}>
+      <div className={clsx("mx-auto", { "w-full overflow-x-hidden": isCategory || isProduct || isAllProducts || isTestimonials, "carousel-container relative": isCategory || isProduct || isAllProducts || isTestimonials, "xl:h-[274px] lg:h-[284px] md:h-[220px] xs:h-[324px] h-[214px]": isCategory, "xl:h-[368px] lg:h-[368px] md:h-[308px] sm:h-[344px] xs:h-[274px] h-[254px]": isProduct, "xl:h-[137px] md:h-[142px] xs:h-[162px] h-[117px]": isAllProducts, "xl:h-[480px] md:h-[440px] sm:h-[380px] h-[400px] xs:h-[338px] lg:px-5 sm:px-[15px] px-2.5": isTestimonials, "lg:mt-10 sm:mt-[30px] mt-5": isAllCategories })}>
         <div id={`carouselContainer-${id}`} className={clsx({ "absolute flex h-full": isCategory || isProduct || isAllProducts || isTestimonials, "md:gap-4 gap-2": isCategory || isProduct || isAllCategories, "grid lg:gap-[50px] sm:gap-[30px] xs:gap-[25px] gap-5 lg:grid-cols-3 grid-cols-2": !isCategory && !isProduct && !isAllProducts && !isAllCategories && !isTestimonials, "flex lg:gap-x-3 gap-x-1.5": isAllProducts, "grid sm:grid-cols-2 grid-cols-1": isAllCategories, "lg:gap-x-[30px] gap-x-[15px] py-1": isTestimonials })}>
           {data.map((image: any, i: number) => isCategory ? (
             <>
@@ -254,7 +254,7 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
                     {/* TODO: aku ragu mau ubah ini ke text-sm atau biarin aja 16px ukurannya yah? coba tambahin underlinenya deh biar bisa mutusin */}
                   </div>
                   <div className="absolute w-full bottom-0 flex justify-center">
-                    <Link href={`/category${image.href}`} className="text-bs-fourth lg:text-sm sm:text-xs text-[10px] font-medium hover:text-bs-third underline lg:underline-offset-8 sm:underline-offset-[6px] underline-offset-4">View Product</Link>
+                    <Link href={`/category/${image.href}`} className="text-bs-fourth lg:text-sm sm:text-xs text-[10px] font-medium hover:text-bs-third underline lg:underline-offset-8 sm:underline-offset-[6px] underline-offset-4">View Product</Link>
                   </div>
                 </section>
               </article>

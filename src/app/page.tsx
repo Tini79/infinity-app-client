@@ -30,7 +30,7 @@ export default async function Home() {
           <Image src="/imgs/brand-logo.png" alt="Infinity Pritty Jewellery Logo" width={368} height={176} className="xl:w-[368px] md:w-[318px] w-[245px] xl:h-[176px] md:h-[152px] h-[117px] lg:m-0 mx-auto lg:mb-0 mb-6" />
         </div>
         <div className="flex-1 flex items-center">
-          <p className="lg:text-sm sm:text-xs text-[10px] lg:leading-6 sm:leading-5 leading-4 text-white text-justify">Founded in 2021, Infinity Pretty Wear strives to introduce the world to the beauty of Balinese culture through our unique jewelry. We bridge the gap between traditional Balinese culture and modern fashion, allowing everyone to experience the &ldquo;goodness of Bali&ldquo; through our vibrant and spiritually inspired designs.</p>
+          <p className="lg:text-sm sm:text-xs text-[10px] lg:leading-6 sm:leading-5 leading-4 text-white text-justify">Founded in 2021, Infinity Pritty Jewellery Wear strives to introduce the world to the beauty of Balinese culture through our unique jewelry. We bridge the gap between traditional Balinese culture and modern fashion, allowing everyone to experience the &ldquo;goodness of Bali&ldquo; through our vibrant and spiritually inspired designs.</p>
         </div>
       </section>
       <section className="px-10 lg:py-[100px] sm:py-[75px] py-[50px]">

@@ -1,4 +1,4 @@
-import { getCategories, getProductsByCategory } from "@/app/lib/data";
+import { getCategories, getCategorySlug, getProductsByCategory } from "@/app/lib/data";
 import Description from "../../../ui/components/description";
 import Hero from "../../../ui/components/hero";
 import { crimsonText } from "../../../ui/fonts";
@@ -6,8 +6,34 @@ import Image from "next/image"
 import ProductsCarousel from "@/app/ui/components/home/products-carousel";
 import dynamic from "next/dynamic";
 import ProductSection from "@/app/ui/components/slug/product-section";
+import { Metadata } from "next";
 
-export default async function Category({ params }: { params: { slug: string } }) {  
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  try {
+    const response = await getCategorySlug(params.slug)
+    if (response?.length === 0) {
+      return {
+        title: "Not Found",
+        description: "The page you're looking for does not exist!"
+      }
+    }
+    
+    return {
+      openGraph: {
+        title: response?.[0]?.name,
+        description: response?.[0]?.desc1,
+        images: [response?.[0]?.path]
+      }
+    }
+  } catch (error) {
+    return {
+      title: "Not Found",
+      description: "The page you're looking for does not exist!"
+    }
+  }
+}
+
+export default async function Category({ params }: { params: { slug: string } }) {
   const imageUrl = `/imgs/categories/${params.slug}.jpg`;
   const products = await getProductsByCategory(params.slug)
   const { materialDescTitle, triHitaKarana, slug } = require("@/app/lib/placeholder-data")
@@ -19,7 +45,7 @@ export default async function Category({ params }: { params: { slug: string } })
   }
   const categories = await getCategories()
   const anotherCategories = []
-  
+
   for (let i = 0; i < categories.length; i++) {
     if (!(categories[i].slug == params.slug)) anotherCategories.push(categories[i])
   }

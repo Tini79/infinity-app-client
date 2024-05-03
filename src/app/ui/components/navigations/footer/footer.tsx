@@ -4,7 +4,7 @@ import NavLinks from "../navlinks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 
-export default async function Footer() {
+export default function Footer() {
   const { contacts, navMenus, categories } = require("@/app/lib/placeholder-data")
 
   return (

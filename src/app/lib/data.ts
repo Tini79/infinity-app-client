@@ -21,6 +21,26 @@ export async function getCategories() {
   }
 }
 
+export async function getSlugs(){
+  try {
+    const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/slugs`)    
+    return data.data
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch categorie\'s slugs data.');
+  }
+}
+
+export async function getCategorySlug(slug: string){
+  try {
+    const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/slug/${slug}`)    
+    return data.data
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch categorie\'s slugs data.');
+  }
+}
+
 export async function getPopularCategories() {
   try {
     const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/popular-categories`)

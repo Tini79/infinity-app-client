@@ -41,10 +41,10 @@ const navMenus = [
     name: "Testimonials",
     href: "/#testimonialsSection"
   },
-  {
-    name: "Blog",
-    href: "/"
-  },
+  // {
+  //   name: "Blog",
+  //   href: "/"
+  // },
 ]
 
 const categories = [

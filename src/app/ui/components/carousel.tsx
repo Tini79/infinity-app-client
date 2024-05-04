@@ -140,39 +140,41 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
     // TODO: ada moment ketika load page lagi, malah dibawa ke footer
     <>
       {/* title and slider button */}
-      <div className={clsx(!isTestimonials && "lg:mb-6 sm:mb-[18px] mb-3 flex w-full")}>
-        {isTestimonials ? (
-          <>
-            <div className="lg:mb-[52px] sm:mb-[39px] mb-[26px] text-center">
-              <h2 className="lg:mb-2 sm:mb-1.5 mb-1 uppercase lg:text-sm sm:text-xs text-[10px] lg:tracking-[4px] tracking-[2px]">{title[0]}</h2>
-              <span className={`${crimsonText.className} lg:text-[36px] sm:text-[34px] text-[32px] !font-bold`}>{title[1]}</span>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="flex-initial w-3/4">
-              <span className={`${crimsonText.className} lg:text-[32px] sm:text-[30px] text-[28px] !font-bold`}>{title}</span>
-            </div>
-          </>
-        )}
-        {((isCategory || isProduct) && showSliderBtn) && (
-          <>
-            <div className="flex-initial w-1/4 flex justify-end lg:gap-5 sm:gap-[15px] gap-2.5">
-              <button disabled={isStartLimit} onClick={() => onClickSlider(false)}><FontAwesomeIcon icon={faCircleChevronLeft} className="slider-icon lg:text-2xl sm:text-[22px] text-xl text-bs-third--lighter hover:text-bs-third" /></button>
-              <button disabled={isEndLimit} onClick={() => onClickSlider(true)}><FontAwesomeIcon icon={faCircleChevronRight} className="slider-icon lg:text-2xl sm:text-[22px] text-xl text-bs-third--lighter hover:text-bs-third" /></button>
-            </div>
-          </>
-        )}
-      </div>
+      {!isAllProducts && (
+        <>
+          <div className={clsx(!isTestimonials && "lg:mb-6 sm:mb-[18px] mb-3 flex w-full")}>
+            {isTestimonials ? (
+              <>
+                <div className="lg:mb-[52px] sm:mb-[39px] mb-[26px] text-center">
+                  <h2 className="lg:mb-2 sm:mb-1.5 mb-1 uppercase lg:text-sm sm:text-xs text-[10px] lg:tracking-[4px] tracking-[2px]">{title[0]}</h2>
+                  <span className={`${crimsonText.className} lg:text-[36px] sm:text-[34px] text-[32px] !font-bold`}>{title[1]}</span>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="flex-initial w-3/4">
+                  <span className={`${crimsonText.className} lg:text-[32px] sm:text-[30px] text-[28px] !font-bold`}>{title}</span>
+                </div>
+              </>
+            )}
+            {((isCategory || isProduct) && showSliderBtn) && (
+              <>
+                <div className="flex-initial w-1/4 flex justify-end lg:gap-5 sm:gap-[15px] gap-2.5">
+                  <button disabled={isStartLimit} onClick={() => onClickSlider(false)}><FontAwesomeIcon icon={faCircleChevronLeft} className="slider-icon lg:text-2xl sm:text-[22px] text-xl text-bs-third--lighter hover:text-bs-third" /></button>
+                  <button disabled={isEndLimit} onClick={() => onClickSlider(true)}><FontAwesomeIcon icon={faCircleChevronRight} className="slider-icon lg:text-2xl sm:text-[22px] text-xl text-bs-third--lighter hover:text-bs-third" /></button>
+                </div>
+              </>
+            )}
+          </div>
+        </>
+      )}
       {/* the sliders */}
-      {/* <div> */}
       {/* TODO: kalo mau bikin slider pada Product Categories section "overflow-x-scroll": isAllCategories, */}
-      <div className={clsx("mx-auto", { "w-full overflow-x-hidden": isCategory || isProduct || isAllProducts || isTestimonials, "carousel-container relative": isCategory || isProduct || isAllProducts || isTestimonials, "xl:h-[274px] lg:h-[284px] md:h-[220px] xs:h-[324px] h-[214px]": isCategory, "xl:h-[368px] lg:h-[368px] md:h-[308px] sm:h-[344px] xs:h-[274px] h-[254px]": isProduct, "xl:h-[137px] md:h-[142px] xs:h-[162px] h-[117px]": isAllProducts, "xl:h-[480px] md:h-[440px] sm:h-[380px] h-[400px] xs:h-[338px] lg:px-5 sm:px-[15px] px-2.5": isTestimonials, "lg:mt-10 sm:mt-[30px] mt-5": isAllCategories })}>
+      <div className={clsx("mx-auto", { "w-full overflow-x-hidden": isCategory || isProduct || isAllProducts || isTestimonials, "carousel-container relative": isCategory || isProduct || isAllProducts || isTestimonials, "xl:h-[274px] lg:h-[284px] md:h-[220px] xs:h-[324px] h-[214px]": isCategory, "xl:h-[388px] lg:h-[378px] md:h-[308px] sm:h-[344px] xs:h-[274px] h-[254px]": isProduct, "xl:h-[137px] md:h-[142px] xs:h-[162px] h-[117px]": isAllProducts, "xl:h-[480px] md:h-[440px] sm:h-[380px] h-[400px] xs:h-[338px] lg:px-5 sm:px-[15px] px-2.5": isTestimonials, "lg:mt-10 sm:mt-[30px] mt-5": isAllCategories })}>
         <div id={`carouselContainer-${id}`} className={clsx({ "absolute flex h-full": isCategory || isProduct || isAllProducts || isTestimonials, "md:gap-4 gap-2": isCategory || isProduct || isAllCategories, "grid lg:gap-[50px] sm:gap-[30px] xs:gap-[25px] gap-5 lg:grid-cols-3 grid-cols-2": !isCategory && !isProduct && !isAllProducts && !isAllCategories && !isTestimonials, "flex lg:gap-x-3 gap-x-1.5": isAllProducts, "grid sm:grid-cols-2 grid-cols-1": isAllCategories, "lg:gap-x-[30px] gap-x-[15px] py-1": isTestimonials })}>
           {data.map((image: any, i: number) => isCategory ? (
             <>
-              {/* TODO: unique */}
-              <div key={`image${i}`} id={`image${i}`} className="relative xl:w-[calc((100vw-112px)/3)] lg:w-[calc((100vw-96px)/2)] md:w-[calc((100vw-76px)/2)] sm:w-[calc((100vw-60px))] w-[calc((100vw-40px))] mx-auto" onMouseEnter={() => handleHover(i)} onMouseLeave={() => handleHover(null)}>
+              <div key={`imageOfCategory-${i}`} id={`image${i}`} className="relative xl:w-[calc((100vw-112px)/3)] lg:w-[calc((100vw-96px)/2)] md:w-[calc((100vw-76px)/2)] sm:w-[calc((100vw-60px))] w-[calc((100vw-40px))] mx-auto" onMouseEnter={() => handleHover(i)} onMouseLeave={() => handleHover(null)}>
                 <Link href={`category/${image.href}`}>
                   <Image src={`/${image.path}`} alt={image.name} width={388} height={274} className="w-full h-full object-cover" />
                   <span className={clsx(`${crimsonText.className} absolute top-0 w-full h-full hover:bg-bs-fourth hover:bg-opacity-[56%] justify-center items-center !font-bold lg:text-lg sm:text-base text-sm text-white`, currDisplays[i])}>{image.name}</span>
@@ -189,11 +191,9 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
             </>
           ) : (isProduct ? (
             <>
-              {/* TODO: bikin unique */}
-              <article key={`isproduct${i}`} className={clsx("xl:w-[calc((100vw-128px)/4)] lg:w-[calc((100vw-112px)/3)] md:w-[calc((100vw-92px)/3)] sm:w-[calc((100vw-66px)/2)] w-[calc((100vw-48px)/2)] lg:p-2 sm:p-1.5 p-1", productCardCls)}>
+              <article key={`product-${image.code}`} className={clsx("xl:w-[calc((100vw-128px)/4)] lg:w-[calc((100vw-112px)/3)] md:w-[calc((100vw-92px)/3)] sm:w-[calc((100vw-66px)/2)] w-[calc((100vw-48px)/2)] lg:p-2 sm:p-1.5 p-1", productCardCls)}>
                 <section className="relative h-full">
-                  {/* TODO: mungkin nanti untuk width dan height (semua image yg sifatnya statis) bisa disesuaikan lagi biar foto yg dihasilkan mak nyuss, atau pakai svg aja? */}
-                  <div className="md:h-1/2 xs:h-[55%] h-[48%] lg:mb-2 sm:mb-1.5 mb-1">
+                  <div className="md:h-3/5 xs:h-2/3 h-[48%] lg:mb-2 sm:mb-1.5 mb-1">
                     <Image src={`/${image.path}`} alt={image.name} width={388} height={274} className="w-full h-full object-cover" />
                   </div>
                   <div className="lg:mb-4 sm:mb-3 mb-2">
@@ -208,7 +208,6 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
                     )}
                   </div>
                   <div className="absolute w-full bottom-0">
-                    {/* TODO: mungkin ini nanti jadiin config kayak sistem cakra, kan di localstorage itu diubah */}
                     {isAuth ? (
                       <Button btnType="btn-product" isAuth />
                     ) : (
@@ -220,9 +219,8 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
             </>
           ) : (isAllCategories ? (
             <>
-              {/* TODO: bikin unique */}
               {/*  xl:w-[calc((100vw-112px)/3)] lg:w-[calc((100vw-96px)/2)] md:w-[calc((100vw-76px)/2)] sm:w-[calc((100vw-60px))] w-[calc((100vw-40px))] */}
-              <div key={`allcategories${i}`} className="relative xl:h-[338px] lg:h-[300px] md:h-[230px] sm:h-[188px] xs:h-[316px] h-[200px]" onMouseEnter={() => handleHover(i)} onMouseLeave={() => { handleHover(null) }}>
+              <div key={`category-${image.id}`} className="relative xl:h-[338px] lg:h-[300px] md:h-[230px] sm:h-[188px] xs:h-[316px] h-[200px]" onMouseEnter={() => handleHover(i)} onMouseLeave={() => { handleHover(null) }}>
                 <Link href={`category/${image.href}`}>
                   <span className={clsx("absolute w-full h-full bg-bs-fourth top-0 bg-opacity-[56%]", currDisplays[i])}></span>
                   <Image src={`/${image.path}`} alt={image.name} width={590} height={338} className="w-full h-full object-cover"></Image>
@@ -232,13 +230,12 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
             </>
           ) : (isTestimonials ? (
             <>
-              <article key={`testi${i}`} className="lg:w-[calc((100vw-148px)/3)] sm:w-[calc((100vw-83px)/2)] xs:w-[calc((100vw-63px)/2)] w-[calc((100vw-48px))] lg:px-4 sm:px-3 px-2 lg:pt-4 sm:pt-3 pt-2 lg:pb-6 sm:pb-[18px] pb-3 mx-auto hover:shadow-[0_0_4px_0_rgba(51,44,17,0.16)]">
+              <article key={`testimonial-${image.id}`} className="lg:w-[calc((100vw-148px)/3)] sm:w-[calc((100vw-83px)/2)] xs:w-[calc((100vw-63px)/2)] w-[calc((100vw-48px))] lg:px-4 sm:px-3 px-2 lg:pt-4 sm:pt-3 pt-2 lg:pb-6 sm:pb-[18px] pb-3 mx-auto hover:shadow-[0_0_4px_0_rgba(51,44,17,0.16)]">
                 <section className="h-full relative">
                   <div className="h-1/2 lg:mb-2 sm:mb-1.5 mb-1">
                     <Image src={`/${image.path}`} alt={image.name} width={348} height={313} className="w-full h-full object-cover" />
                   </div>
                   <div className="text-center">
-                    {/* or here? */}
                     <span className="lg:text-sm sm:text-xs text-[10px] text-bs-third opacity-50">{image.customer_name}</span>
                     {/*  md:mb-1 mb-0.5 */}
                     <h3 className={`${crimsonText.className} lg:text-xl sm:text-lg text-base !font-bold lg:mb-2 sm:mb-1.5`}>{image.name}</h3>
@@ -261,11 +258,10 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
             </>
           ) : (
             <>
-              {/* TODO: unique */}
-              <div key={`materials${i}`} className="w-full mx-auto">
+              <div key={`material-${image.id}`} className="w-full mx-auto">
                 <article>
                   <section>
-                    <Image src={`/${image.path}`} alt={image.name} width={340} height={300} className="lg:mb-2 sm:mb-1.5 mb-1 w-full h-full" />
+                    <Image src={`/${image.path}`} alt={image.material} width={340} height={300} className="lg:mb-2 sm:mb-1.5 mb-1 w-full h-full" />
                     <div className="text-center">
                       <h4 className={`${crimsonText.className} lg:mb-2 sm:mb-1.5 mb-1`}>{image.material}</h4>
                       <p className="font-light lg:text-sm sm:text-xs text-[10px]">{image.material_detail}</p>

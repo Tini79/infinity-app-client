@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         description: "The page you're looking for does not exist!"
       }
     }
-    
+
     return {
       openGraph: {
         title: response?.[0]?.name,
@@ -62,19 +62,23 @@ export default async function Category({ params }: { params: { slug: string } })
       </section >
       <ProductsCarousel id="newArrivals" title="New Arrivals" data={products.details} isProduct productCardCls="bg-bs-fourth bg-opacity-[2%]" custCls="lg:mb-20 sm:mb-[60px] mb-10" />
       <Description isBgPrimary title={products.data.title_desc1} desc={products.data.desc1}>
-        <div className="md:flex grid justify-center items-center lg:gap-x-8 md:gap-x-7 gap-y-7 lg:px-10 px-5">
-          {params.slug == slug[0].triHitaKaranaBracelets && (triHitaKarana.map((concept: any) => (
-            <>
-              <div key={concept.id} className="text-center">
-                <span className={`${crimsonText.className} block !font-bold lg:text-lg sm:text-base text-sm lg:mb-2 sm:mb-1.5 mb-1`}>{concept.name}</span>
-                <span className="block font-light lg:text-sm sm:text-xs text-[10px]">{concept.desc}</span>
-              </div>
-              {concept.id <= 2 && (
-                <span key={concept.id} className="hidden md:block h-10 border"></span>
-              )}
-            </>
-          )))}
-        </div>
+        {params.slug == slug[0].triHitaKaranaBracelets && (
+          <>
+            <div className="md:flex grid justify-center items-center lg:gap-x-8 md:gap-x-7 gap-y-7 lg:px-10 px-5">
+              {params.slug == slug[0].triHitaKaranaBracelets && (triHitaKarana.map((concept: any) => (
+                <>
+                  <div key={concept.id} className="text-center">
+                    <span className={`${crimsonText.className} block !font-bold lg:text-lg sm:text-base text-sm lg:mb-2 sm:mb-1.5 mb-1`}>{concept.name}</span>
+                    <span className="block font-light lg:text-sm sm:text-xs text-[10px]">{concept.desc}</span>
+                  </div>
+                  {concept.id <= 2 && (
+                    <span key={concept.id} className="hidden md:block h-10 border"></span>
+                  )}
+                </>
+              )))}
+            </div>
+          </>
+        )}
       </Description>
       {/* product explanation */}
       <section className="lg:py-20 sm:py-[60px] py-10 md:px-0 lg:px-10 sm:px-[30px] px-5">

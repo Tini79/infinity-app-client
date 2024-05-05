@@ -42,6 +42,14 @@ button.center-slider:disabled {
   transition: left 0.5s ease;
 }
 
+button.slick-arrow::before {
+  color: #E1DED3;
+}
+
+button.slick-arrow::before:hover {
+  color: #675823;
+}
+
 .carousel-container__inner {
   display: grid;
   grid-auto-flow: column;

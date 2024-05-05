@@ -7,6 +7,7 @@ import ProductsCarousel from "@/app/ui/components/home/products-carousel";
 import dynamic from "next/dynamic";
 import ProductSection from "@/app/ui/components/slug/product-section";
 import { Metadata } from "next";
+import clsx from "clsx";
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   try {
@@ -60,26 +61,28 @@ export default async function Category({ params }: { params: { slug: string } })
       <section id="categoryHero" className="bg-[url('/imgs/categories/${params.slug}.jpg')] relative h-screen w-full bg-center flex items-center lg:mb-20 sm:mb-[60px] mb-10 bg-cover bg-no-repeat" style={{ backgroundImage: `url(${imageUrl})` }}>
         <Hero isHomepage={false} title={title} subTitle={subTitle} />
       </section >
-      <ProductsCarousel id="newArrivals" title="New Arrivals" data={products.details} isProduct productCardCls="bg-bs-fourth bg-opacity-[2%]" custCls="lg:mb-20 sm:mb-[60px] mb-10" />
-      <Description isBgPrimary title={products.data.title_desc1} desc={products.data.desc1}>
-        {params.slug == slug[0].triHitaKaranaBracelets && (
-          <>
-            <div className="md:flex grid justify-center items-center lg:gap-x-8 md:gap-x-7 gap-y-7 lg:px-10 px-5">
-              {params.slug == slug[0].triHitaKaranaBracelets && (triHitaKarana.map((concept: any) => (
-                <>
-                  <div key={concept.id} className="text-center">
-                    <span className={`${crimsonText.className} block !font-bold lg:text-lg sm:text-base text-sm lg:mb-2 sm:mb-1.5 mb-1`}>{concept.name}</span>
-                    <span className="block font-light lg:text-sm sm:text-xs text-[10px]">{concept.desc}</span>
-                  </div>
-                  {concept.id <= 2 && (
-                    <span key={concept.id} className="hidden md:block h-10 border"></span>
-                  )}
-                </>
-              )))}
-            </div>
-          </>
-        )}
-      </Description>
+      <ProductsCarousel id="newArrivals" title="New Arrivals" data={products.details} isProduct productCardCls="bg-bs-fourth bg-opacity-[2%]" custCls={clsx({ "lg:mb-20 sm:mb-[60px] mb-10": products.data.title_desc1 })} />
+      {products.data.title_desc1 && (
+        <Description isBgPrimary title={products.data.title_desc1} desc={products.data.desc1}>
+          {params.slug == slug[0].triHitaKaranaBracelets && (
+            <>
+              <div className="md:flex grid justify-center items-center lg:gap-x-8 md:gap-x-7 gap-y-7 lg:px-10 px-5">
+                {params.slug == slug[0].triHitaKaranaBracelets && (triHitaKarana.map((concept: any) => (
+                  <>
+                    <div key={concept.id} className="text-center">
+                      <span className={`${crimsonText.className} block !font-bold lg:text-lg sm:text-base text-sm lg:mb-2 sm:mb-1.5 mb-1`}>{concept.name}</span>
+                      <span className="block font-light lg:text-sm sm:text-xs text-[10px]">{concept.desc}</span>
+                    </div>
+                    {concept.id <= 2 && (
+                      <span key={concept.id} className="hidden md:block h-10 border"></span>
+                    )}
+                  </>
+                )))}
+              </div>
+            </>
+          )}
+        </Description>
+      )}
       {/* product explanation */}
       <section className="lg:py-20 sm:py-[60px] py-10 md:px-0 lg:px-10 sm:px-[30px] px-5">
         <div className="md:flex items-center">
@@ -91,10 +94,12 @@ export default async function Category({ params }: { params: { slug: string } })
           </div>
         </div>
       </section>
-      <Description customSectionCls="lg:mb-20 sm:mb-[60px] mb-10 " isBgPrimary={false} hasCarousel title={params.slug == slug[0].triHitaKaranaBracelets ? materialDescTitle[0].triHitaKaranaBracelets : params.slug == slug[0].chipstoneBracelets ? materialDescTitle[0].chipstoneBracelets : ""}>
+      <Description customSectionCls="lg:mb-20 sm:mb-[60px] mb-10 " isBgPrimary={false} hasCarousel title={params.slug == slug[0].triHitaKaranaBracelets ? materialDescTitle[0].triHitaKaranaBracelets : params.slug == slug[0].chipstoneBracelets ? materialDescTitle[0].chipstoneBracelets : params.slug == slug[0].redStringBracelets ? materialDescTitle[0].redStringBracelets : ""}>
         <DynamicCarousel id="description" data={products.materials} />
       </Description>
-      <ProductsCarousel id="mostPopular" title="Most Popular" data={mostPopProducts} isProduct custCls="sm:py-20 py-10 bg-bs-fourth bg-opacity-[2%]" />
+      {(mostPopProducts.length > 0) && (
+        <ProductsCarousel id="mostPopular" title="Most Popular" data={mostPopProducts} isProduct custCls="sm:py-20 py-10 bg-bs-fourth bg-opacity-[2%]" />
+      )}
       {/* all products */}
       <ProductSection products={products}></ProductSection>
       <section className="lg:px-10 px-5 lg:py-20 py-10 bg-bs-fourth bg-opacity-[2%]">

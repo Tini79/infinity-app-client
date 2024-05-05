@@ -65,7 +65,8 @@ const categories = [
 const materialDescTitle = [
   {
     "triHitaKaranaBracelets": "The Tri Hita Karana bracelets is crafted with mindful attention to the Balinese philosophy, reflected in the materials we choose.",
-    "chipstoneBracelets": "The Chipstone bracelets may feature a variety of natural stones, each with its unique properties"
+    "chipstoneBracelets": "The Chipstone bracelets may feature a variety of natural stones, each with its unique properties",
+    "redStringBracelets": "Beyond an accessory, the red string bracelet in Balinese tradition holds a powerful story"
   }
 ]
 
@@ -90,7 +91,8 @@ const triHitaKarana = [
 const slug = [
   {
     "triHitaKaranaBracelets": "tri-hita-karana-bracelets",
-    "chipstoneBracelets": "chipstone-bracelets"
+    "chipstoneBracelets": "chipstone-bracelets",
+    "redStringBracelets": "red-string-bracelets"
   }
 ]
 

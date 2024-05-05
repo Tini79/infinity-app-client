@@ -20,9 +20,8 @@ export default function ProductsCarousel({
   isProduct,
   productCardCls,
   custCls, }: ProductCarouselProps) {
-  const DynamicCarousel = dynamic(() => import("../carousel"), {ssr: false})
-// TODO: belum ada token
-let token = ""
+  const DynamicCarousel = data.length >= 4 ? dynamic(() => import("../slick"), { ssr: false }) : dynamic(() => import("../carousel"), { ssr: false })
+
   return (
     <>
       <section className={clsx("lg:px-10 sm:px-[30px] px-5", custCls)}>

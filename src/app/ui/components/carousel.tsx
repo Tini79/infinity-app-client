@@ -219,7 +219,6 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
             </>
           ) : (isAllCategories ? (
             <>
-              {/*  xl:w-[calc((100vw-112px)/3)] lg:w-[calc((100vw-96px)/2)] md:w-[calc((100vw-76px)/2)] sm:w-[calc((100vw-60px))] w-[calc((100vw-40px))] */}
               <div key={`category-${image.id}`} className="relative xl:h-[338px] lg:h-[300px] md:h-[230px] sm:h-[188px] xs:h-[316px] h-[200px]" onMouseEnter={() => handleHover(i)} onMouseLeave={() => { handleHover(null) }}>
                 <Link href={`category/${image.href}`}>
                   <span className={clsx("absolute w-full h-full bg-bs-fourth top-0 bg-opacity-[56%]", currDisplays[i])}></span>
@@ -241,7 +240,7 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
                     <h3 className={`${crimsonText.className} lg:text-xl sm:text-lg text-base !font-bold lg:mb-2 sm:mb-1.5`}>{image.name}</h3>
                     <div className="flex justify-center lg:mb-4 sm:mb-2 mb-1">
                       {Array.from(Array(image.rate), (e, i) => {
-                        return <FontAwesomeIcon icon={faStar} className="lg:w-3.5 sm:w-3 w-2.5 text-bs-third opacity-50 hover:text-bs-third"></FontAwesomeIcon>
+                        return <FontAwesomeIcon key={`rate-${i}`} icon={faStar} className="lg:w-3.5 sm:w-3 w-2.5 text-bs-third opacity-50 hover:text-bs-third"></FontAwesomeIcon>
                       })}
                     </div>
                     {/* lg:mb-10 sm:mb-[30px] mb-5  */}
@@ -274,20 +273,8 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
           }
         </div >
       </div >
-      {/* TODO: persentase ini masih statis yah, jadi kalo ada penambahan kategori, update manual; soalnya belum tahu caranya bikin biar mau statis gimana caranya */}
-      {/* TODO: pakai tombol aja deh dulu semua carouselnya, nanti kalo sempet kita edit ini sesuai design */}
-      {/* {isAllCategories && (
-          <div className="relative mt-4 bg-bs-fourth h-1.5 w-[33%] left-0"></div>
-        )} */}
-      {/* </div> */}
       {((isTestimonials || isAllProducts) && showSliderBtn) && (
         <>
-          {/* <div className="lg:mt-2 sm:mt-[6px] mt-1 flex w-full justify-center lg:gap-5 sm:gap-[15px] gap-2.5">
-            <button disabled={isStartLimit} onClick={() => onClickSlider(false)} className="lg:p-1.5 sm:p-[4px] p-[3px] rounded-full bg-bs-third--lighter hover:bg-bs-third">
-            </button>
-            <button disabled={isEndLimit} onClick={() => onClickSlider(true)} className="center-slider lg:p-1.5 sm:p-[4px] p-[3px] rounded-full bg-bs-third--lighter hover:bg-bs-third">
-            </button>
-          </div> */}
           <div className="lg:mt-5 sm:mt-[15px] mt-2.5 flex w-full justify-end lg:gap-5 sm:gap-[15px] gap-2.5">
             <button disabled={isStartLimit} onClick={() => onClickSlider(false)}><FontAwesomeIcon icon={faCircleChevronLeft} className="slider-icon lg:text-2xl sm:text-[22px] text-xl text-bs-third--lighter hover:text-bs-third" /></button>
             <button disabled={isEndLimit} onClick={() => onClickSlider(true)}><FontAwesomeIcon icon={faCircleChevronRight} className="slider-icon lg:text-2xl sm:text-[22px] text-xl text-bs-third--lighter hover:text-bs-third" /></button>

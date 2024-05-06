@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default async function Category({ params }: { params: { slug: string } }) {
+export default async function Category({ params }: { params: { slug: string } }) {  
   const imageUrl = `/imgs/categories/${params.slug}.jpg`;
   const products = await getProductsByCategory(params.slug)
   const { materialDescTitle, triHitaKarana, slug } = require("@/app/lib/placeholder-data")

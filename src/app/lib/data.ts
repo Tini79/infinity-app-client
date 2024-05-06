@@ -26,7 +26,7 @@ export async function getSlugs(){
     return data.data
   } catch (error) {
     console.error('Database Error:', error);
-    throw new Error('Failed to fetch categorie\'s slugs data.');
+    throw new Error('Failed to fetch category\'s slugs data.');
   }
 }
 

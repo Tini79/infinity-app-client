@@ -48,7 +48,7 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
     } else {
       return [5, 4, 3, 2, 2]
     }
-  }, [isCategory, isProduct, isAllProducts, isAllCategories, isTestimonials])
+  }, [isCategory, isProduct, isTestimonials])
   const [temptItemDisplayed, setTemptItemDisplayed] = useState(0)
   const currItemDisplayed = mediaXl.matches ? itemDisplayed[0] : mediaLg.matches ? itemDisplayed[1] : mediaMd.matches ? itemDisplayed[2] : mediaSm.matches ? itemDisplayed[3] : itemDisplayed[4]
   let showSliderBtn = false

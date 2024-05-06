@@ -86,7 +86,7 @@ export default function Slick({ id, title, data, isCategory = false, isProduct =
         <Slider {...settings}>
           {data.map((image: any, i: number) => isProduct && (
             <>
-              <div className={clsx({ "md:px-2 px-1": isProduct })}>
+              <div key={`slickProduct-${image.code}`} className={clsx({ "md:px-2 px-1": isProduct })}>
                 <article key={`product-${image.code}`} className={clsx("lg:p-2 sm:p-1.5 p-1", productCardCls, { "xl:h-[388px] lg:h-[378px] md:h-[308px] sm:h-[344px] xs:h-[274px] h-[254px]": isProduct })}>
                   <section className="relative h-full">
                     <div className="md:h-3/5 xs:h-2/3 h-[48%] lg:mb-2 sm:mb-1.5 mb-1">

@@ -1,7 +1,6 @@
 "use server"
 import axios from "axios"
 
-// export async function getCategories({ token }: { token: string | null }) {
 export async function getCategories() {
   try {
     // const headers = {

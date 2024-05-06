@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { z } from "zod"
+
 const FormSchema = z.object({
   full_name: z.string().trim().nonempty("full name is required!"),
   username: z.string().trim().nonempty("username is required!"),
@@ -12,11 +13,12 @@ const FormSchema = z.object({
   email: z.string().email("invalid email address").trim().nonempty("email is required!"),
   password: z.string().trim().nonempty("password is required!"),
 })
-const FormSchemaRequired = FormSchema.required()
 
+const FormSchemaRequired = FormSchema.required()
 const RegisterUser = FormSchemaRequired
 const LoginUser = FormSchema.omit({ full_name: true, gender: true, country: true, email: true })
 const RequiredLoginUser = LoginUser.required()
+
 export async function registerUser(currState: any, formData: FormData) {
   try {
     const rawData = Object.fromEntries(formData.entries())

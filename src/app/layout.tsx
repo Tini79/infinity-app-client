@@ -21,8 +21,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* TODO: nanti coba ganti ke favicon */}
-        <link rel="icon" href="/imgs/logo-purple.png" type="image/png" sizes="16x16 32x32" />
       </head>
       <body className={`${montserrat.className} antialiased`} >
         <NavigationProvider>{children}</NavigationProvider>

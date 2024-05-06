@@ -4,10 +4,10 @@ import { getSlugs } from "./lib/data";
 export default async function sitemap() {
   const baseUrl = "https://infinityprittyjewellery.com"
   const response = await getSlugs()
-  const categoriSlugs = response?.map((slug: any) => {
+  const categorySlugs = response?.map((data: any) => {
     return {
-      url: `${baseUrl}/category/${slug.slug}`,
-      lastModified: new Date(slug?.created_at)
+      url: `${baseUrl}/category/${data?.slug}`,
+      lastModified: new Date(data?.created_at)
     }
   })
 
@@ -16,6 +16,6 @@ export default async function sitemap() {
       url: `${baseUrl}`,
       lastModified: new Date()
     },
-    ...categoriSlugs
+    ...categorySlugs
   ]
 }

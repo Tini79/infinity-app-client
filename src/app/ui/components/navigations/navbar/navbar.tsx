@@ -83,7 +83,7 @@ export default function Navbar() {
               </li>
             </ul>
             <ul className="xl:hidden flex items-center flex-initial sm:w-1/2 w-1/3 justify-end gap-5">
-              {contacts.map((contact: any, i: number) => i > 0 && (
+              {contacts.map((contact: any, i: number) => i > 3 && (
                 <li key={i}>
                   <NavLinks icon={contact.icon} href={contact.href} customCls="lg:text-sm sm:text-xs text-[10px] text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center" />
                 </li>
@@ -150,7 +150,7 @@ export default function Navbar() {
       <aside id="aside" className="bg-bs-primary--darker p-5 w-full h-full fixed overflow-hidden z-10 sm:hidden -left-full">
         <div className="flex justify-end">
           <button onClick={toggleSideMenu}>
-            <FontAwesomeIcon icon={faClose} className="text-sm text-bs-secondary--lighter hover:text-bs-secondary--darker" />
+            <FontAwesomeIcon icon={faClose} className="text-xl text-bs-secondary--lighter hover:text-bs-secondary--darker" />
           </button>
         </div>
         <div>
@@ -175,7 +175,7 @@ export default function Navbar() {
                 {contacts.map((contact: any, i: number) => (
                   <li key={i}>
                     <Link onClick={toggleSideMenu} href={contact.href}>
-                      <FontAwesomeIcon icon={contact.icon} className="text-bs-secondary--lighter hover:text-bs-secondary--darker w-5 h-5"></FontAwesomeIcon>
+                      <FontAwesomeIcon icon={contact.icon} className="text-bs-secondary--lighter hover:text-bs-secondary--darker text-xl"></FontAwesomeIcon>
                     </Link>
                   </li>
                 ))}

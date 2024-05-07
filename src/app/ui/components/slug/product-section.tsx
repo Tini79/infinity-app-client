@@ -40,7 +40,7 @@ export default function ProductSection({ products }: ProductSectionProps) {
                     <h3 className={`${crimsonText.className} !font-bold lg:text-[30px] sm:text-[28px] text-[26px] lg:leading-8 sm:leading-[30px] leading-7 lg:mb-2 sm:mb-1.5 mb-1`}>
                       {selectedProduct.name}
                     </h3>
-                    <p className="lg:text-base sm:text-sm text-xs font-light text-justify lg:mb-10 md:mb-[30px] mb-5 lg:w-3/4">{selectedProduct.desc}</p>
+                    <p className="lg:text-base sm:text-sm text-xs font-light text-justify lg:mb-10 md:mb-[30px] mb-5 lg:w-3/4">{selectedProduct.description}</p>
                   </div>
                   <Button />
                 </div>

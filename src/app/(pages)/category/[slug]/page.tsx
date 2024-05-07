@@ -86,7 +86,6 @@ export default async function Category({ params }: { params: { slug: string } })
       {/* product explanation */}
       <section className="lg:py-20 sm:py-[60px] py-10 md:px-0 lg:px-10 sm:px-[30px] px-5">
         <div className="md:flex items-center">
-          {/* TODO: untuk height belum pakai persentase */}
           <Image src={`/${products.data.path}`} alt={`${title} Bracelet Collections`} width={630} height={450} className="md:w-1/2 w-full" />
           <div className="lg:mx-10 md:mx-5 md:mt-0 sm:mt-10 mt-5">
             <h2 className={`${crimsonText.className} lg:text-[36px] sm:text-[34px] text-[32px] lg:mb-4 sm:mb-3 mb-2 !font-bold`}>{products.data.title_desc2}</h2>

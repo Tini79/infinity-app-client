@@ -49,7 +49,6 @@ export default async function Home() {
           </p>
         </div>
       </section>
-      {/* TODO: coba bikin setiap section yg dituju pas scroll tampil di tengah" page */}
       <section id="productCategoriesSection" className="lg:px-10 sm:px-[30px] px-5 lg:py-20 sm:py-[60px] py-10 bg-bs-third--lighter">
         <DynamicCarousel id="productCategories" title="Product Categories" isAllCategories data={categories} />
       </section >

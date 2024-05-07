@@ -97,13 +97,13 @@ export default function Navbar() {
                       redirect("/")
                     }}>
                       <button type="submit" className="flex items-center">
-                        <FontAwesomeIcon icon={faRightFromBracket} className="lg:text-sm sm:text-xs text-[10px] text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center"></FontAwesomeIcon>
+                        <FontAwesomeIcon icon={faRightFromBracket} className="lg:text-sm sm:text-xs text-sm text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center"></FontAwesomeIcon>
                       </button>
                     </form>
                   </>
                 ) : (
                   <>
-                    <NavLinks icon={faUser} href="/login" customCls="lg:text-sm sm:text-xs text-[10px] text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center" />
+                    <NavLinks icon={faUser} href="/login" customCls="lg:text-sm sm:text-xs text-sm text-bs-secondary--lighter hover:text-bs-secondary--darker flex items-center" />
                   </>
                 )}
               </li>

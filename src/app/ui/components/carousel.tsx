@@ -244,7 +244,6 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
                         return <FontAwesomeIcon key={`rate-${i}`} icon={faStar} className="lg:w-3.5 sm:w-3 w-2.5 text-bs-third opacity-50 hover:text-bs-third"></FontAwesomeIcon>
                       })}
                     </div>
-                    {/* lg:mb-10 sm:mb-[30px] mb-5  */}
                     <div className="lg:px-4 sm:px-3 px-2">
                       <p className="lg:text-sm sm:text-xs text-[10px] font-light">{image.testimonial}</p>
                     </div>

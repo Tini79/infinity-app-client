@@ -5,7 +5,7 @@ const contacts = [
   {
     icon: faPhone,
     href: "+62881038440302",
-    value: "+62 881-0384-40302",
+    value: "+62 877 3550 4031",
     isPhone: true,
     name: "+62 877 3550 4031"
   },

@@ -37,7 +37,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="fixed w-full shadow-[0_1px_8px_2px_rgba(0,0,0,0.25)] z-10">
+      <header id="header" className="fixed w-full shadow-[0_1px_8px_2px_rgba(0,0,0,0.25)] z-10">
         <nav>
           <div className="bg-bs-primary--darker lg:py-3 sm:py-2 py-1.5 lg:px-10 sm:px-[30px] px-5 flex">
             {/* desktop, laptop, tablet */}

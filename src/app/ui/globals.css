@@ -3,25 +3,20 @@
 @tailwind utilities;
 
 * {
-  /* TODO: coba buat ngetes apakah si scrollbar tetap makan ruang atau kagak */
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
-/* TODO: bikin ini hanya aktif di homepage doang aka yg perlu doang, ini pakai html malah semua page kena */
 html {
   scroll-behavior: smooth;
-  /* overflow-y: scroll; */
 }
 
-.carousel-container::-webkit-scrollbar,
-.carousel-container__inner::-webkit-scrollbar {
+.carousel-container::-webkit-scrollbar {
   display: none;
 }
 
-.carousel-container,
-.carousel-container__inner {
+.carousel-container {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -48,12 +43,4 @@ button.slick-arrow::before {
 
 button.slick-arrow::before:hover {
   color: #675823;
-}
-
-.carousel-container__inner {
-  display: grid;
-  grid-auto-flow: column;
-  /* grid-auto-columns: calc((100% - 48px)/ 4); */
-  /* gap: 10px; */
-  overflow-x: scroll;
 }

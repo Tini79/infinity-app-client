@@ -1,11 +1,8 @@
 "use client"
 import { usePathname } from "next/navigation";
-import React, { Dispatch, SetStateAction, Suspense, createContext, useContext, useState } from "react";
+import React, { Suspense, createContext, useContext } from "react";
 import Navbar from "../app/ui/components/navigations/navbar/navbar";
 import Footer from "../app/ui/components/navigations/footer/footer";
-import { cookies } from "next/headers";
-import { useAuthStatus } from "@/app/lib/config";
-
 interface ContextProps {
   pathname: string,
   // isAuth: boolean,

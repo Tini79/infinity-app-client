@@ -24,7 +24,7 @@ interface CarouselProps {
 }
 
 export default function Carousel({ id, title, data, isCategory = false, isProduct = false, isAllProducts = false, isAllCategories = false, isTestimonials = false, productCardCls = "", isAuth = null, slug, sendProduct }: CarouselProps) {
-  const [currWindowWidth, setCurrWindowWidth] = useState(0)
+  const [currWindowWidth, setCurrWindowWidth] = useState(window.innerWidth)
   const [url, setUrl] = useState("")
   const displays: any = []
   const [isStartLimit, setIsStartLimit] = useState(true)

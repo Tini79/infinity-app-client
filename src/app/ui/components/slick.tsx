@@ -55,7 +55,7 @@ export default function Slick({ id, title, data, isCategory = false, isProduct =
       }
     ]
   } : {
-
+// TODO: condition for another carousel, since some pictures provided less than the display needs for carousel, I still use my scratch version carousel for them
   };
 
   return (

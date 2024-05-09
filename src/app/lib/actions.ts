@@ -35,7 +35,6 @@ export async function registerUser(currState: any, formData: FormData) {
       return { "error": insertedData.error.issues }
     }
 
-    // TODO: dari depan hash juga passnya klo bisa
     const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/registration`, insertedData)
     if (data.statusCode == 200) {
       // TODO: coba pelajari lagi soal revalidatePath ini 

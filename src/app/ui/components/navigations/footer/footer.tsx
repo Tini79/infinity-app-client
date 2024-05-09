@@ -9,7 +9,6 @@ export default function Footer() {
 
   return (
     <>
-      {/* TODO: inget tambahkan garis bawah pada setiap span di sini, klo bisa pakai underline untuk atur mb biar sesuai design, that's good! */}
       <footer className="text-bs-secondary--lighter lg:mt-10 sm:mt-[30px] mt-5">
         <nav className="bg-bs-primary lg:flex lg:py-[120px] sm:!py-[90px] py-[60px] lg:px-10 sm:px-[30px] px-5">
           <div className="flex-initial lg:w-2/6 w-full lg:mb-0 mb-14">

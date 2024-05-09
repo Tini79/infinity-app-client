@@ -14,7 +14,7 @@ interface NavLinks {
   footerMenuTitle?: string,
   hasIcon?: boolean
 }
-// TODO: mungkinuntuk parameter yg diterima bisa dipersingkat
+// TODO: mungkin untuk parameter yg diterima bisa dipersingkat
 export default function NavLinks({ icon, href, isPhone = false, isEmail = false, val, customCls, footerMenus = [], footerMenuTitle, hasIcon = false }: NavLinks) {
   return (
     <>
@@ -22,7 +22,6 @@ export default function NavLinks({ icon, href, isPhone = false, isEmail = false,
         <>
           <Link href={`${isPhone ? "tel:" + href : isEmail ? "mailto:" + href
             : href}`} className={customCls}>
-              {/* lg:w-3.5 sm:w-3 w-2.5 */}
             <FontAwesomeIcon icon={icon} className={clsx("lg:text-sm sm:text-xs text-sm", { "me-2": val })}></FontAwesomeIcon>
             {val && (
               <span>{val}</span>
@@ -32,7 +31,7 @@ export default function NavLinks({ icon, href, isPhone = false, isEmail = false,
       ) : (
         <>
           <div className={customCls}>
-            <span className="lg:text-sm sm:text-xs text-[10px] !font-bold uppercase">{footerMenuTitle}</span>
+            <span className="lg:text-sm sm:text-xs text-[10px] !font-bold uppercase underline lg:underline-offset-8 md:underline-offset-[6px] underline-offset-4">{footerMenuTitle}</span>
             <ul className="lg:mt-4 sm:mt-3 mt-2">
               {footerMenus.map((menu, i) => (
                 // TODO: coba cek ya navlink categori di footer

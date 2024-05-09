@@ -1,18 +1,15 @@
 "use client"
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { crimsonText } from "../../fonts";
 import Button from "../button";
 import Image from "next/image"
-import dynamic from "next/dynamic";
 import Carousel from "../carousel";
-import { useGlobalContext } from "../../../../context/navigation-provider";
 interface ProductSectionProps {
   products: any,
 }
 
 export default function ProductSection({ products }: ProductSectionProps) {
   const [selectedProduct, setSelectedProduct] = useState(products.details[0])
-  // const DynamicCarousel = dynamic(() => import("../../../ui/components/carousel"), { ssr: false })
   // const { isAuth } = useGlobalContext()
   const changeProduct = (productCode: string) => {
     const data = products.details.find((el: any) => el.code == productCode)

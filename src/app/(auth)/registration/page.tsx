@@ -12,11 +12,6 @@ export default async function Registration() {
           <div className="lg:mb-5 sm:mb-[15px] mb-2.5 text-center">
             <span className={`${crimsonText.className} lg:text-[30px] sm:text-[28px] text-[26px] font-bold`}>Registration Form</span>
           </div>
-          {/* {errorMsg && (
-            <div className="bg-red-500 text-white md:p-2 p-1">
-              {errorMsg}
-            </div>
-          )} */}
           <Form data={countries} />
         </div>
       </section>

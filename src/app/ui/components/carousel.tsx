@@ -139,7 +139,6 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
   })
 
   return (
-    // TODO: ada moment ketika load page lagi, malah dibawa ke footer
     <>
       {/* title and slider button */}
       {!isAllProducts && (

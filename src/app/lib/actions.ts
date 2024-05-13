@@ -32,21 +32,21 @@ export async function registerUser(currState: any, formData: FormData) {
     })
 
     if (!insertedData.success) {
-      return { "error": insertedData.error.issues }
+      return { "error": insertedData.error.issues[0].message }
     }
 
     const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/registration`, insertedData)
     if (data.statusCode == 200) {
       // TODO: coba pelajari lagi soal revalidatePath ini 
       revalidatePath("/login")
-      redirect("/login")
-    } else if (data.statusCode == 400) {
-      return { "error": data.message }
+      // redirect("/login")
     }
-  } catch (error) {
-    // throw error;
-    return { "error": error }
+  } catch (error: any) {
+    return { "error": error.response.data.message }
   }
+
+  // redirect to login page when registration is success
+  redirect("/login")
 }
 
 export async function loginUser(currState: any, formData: FormData) {
@@ -58,7 +58,7 @@ export async function loginUser(currState: any, formData: FormData) {
     })
 
     if (!insertedData.success) {
-      return { "error": insertedData.error.issues }
+      return { "error": insertedData.error.issues[0].message }
     }
 
     const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/login`, insertedData)
@@ -66,11 +66,10 @@ export async function loginUser(currState: any, formData: FormData) {
       cookies().set("token", data.data.token)
       revalidatePath("/")
       return data.data
-    } else if (data.statusCode == 401) {
-      return { "error": data.message }
     }
-  } catch (error) {
-    return { "error": error }
+  } catch (error: any) {
+    // TODO: padahal status code 400, tapi di network munculnya 200, kenapa yah?
+    return { "error": error.response.data.message }
   }
 }
 

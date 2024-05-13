@@ -9,6 +9,7 @@ import { saveAuthStatus } from "@/app/lib/config";
 export default function Login() {
   const [state, formAction] = useFormState(loginUser, null)
   let errorMsg = ""
+
   if (state) {
     if (state.token) {
       saveAuthStatus(!!state.token)
@@ -17,6 +18,7 @@ export default function Login() {
       errorMsg = state.error
     }
   }
+  
   return (
     <>
       <section className="bg-bs-third--lighter h-screen flex justify-center items-center">

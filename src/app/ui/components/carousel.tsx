@@ -176,7 +176,7 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
             <>
               <div key={`imageOfCategory-${i}`} id={`image${i}`} className="relative xl:w-[calc((100vw-112px)/3)] lg:w-[calc((100vw-96px)/2)] md:w-[calc((100vw-76px)/2)] sm:w-[calc((100vw-60px))] w-[calc((100vw-40px))] mx-auto" onMouseEnter={() => handleHover(i)} onMouseLeave={() => handleHover(null)}>
                 <Link href={`${url}/category/${image.href}`}>
-                  <Image src={`/${image.path}`} alt={image.name} width={388} height={274} className="w-full h-full object-cover" />
+                  <Image src={`/${image.pop_path ? image.pop_path : image.path}`} alt={image.name} width={388} height={274} className="w-full h-full object-cover" />
                   <span className={clsx(`${crimsonText.className} absolute top-0 w-full h-full hover:bg-bs-fourth hover:bg-opacity-[56%] justify-center items-center !font-bold lg:text-lg sm:text-base text-sm text-white`, currDisplays[i])}>{image.name}</span>
                 </Link>
               </div>

@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { crimsonText } from "../../fonts";
 import Button from "../button";
 import Image from "next/image"
@@ -11,10 +11,13 @@ interface ProductSectionProps {
 export default function ProductSection({ products }: ProductSectionProps) {
   const [selectedProduct, setSelectedProduct] = useState(products.details[0])
   // const { isAuth } = useGlobalContext()
+
+  // useEffect(() => {
   const changeProduct = (productCode: string) => {
     const data = products.details.find((el: any) => el.code == productCode)
     setSelectedProduct(data)
   }
+  // }, [changeProduct])
 
   return (
     <>

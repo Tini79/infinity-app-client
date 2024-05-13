@@ -59,6 +59,18 @@ const categories = [
   {
     name: "Chipstone Bracelets",
     href: "chipstone-bracelets"
+  },
+  {
+    name: "Lava Bracelets",
+    href: "lava-bracelets"
+  },
+  {
+    name: "Bali Ancient Bracelets",
+    href: "bali-ancient-bracelets"
+  },
+  {
+    name: "Set Pack",
+    href: "set-pack"
   }
 ]
 

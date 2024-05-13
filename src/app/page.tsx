@@ -34,7 +34,7 @@ export default async function Home() {
         </div>
       </section>
       <section className="px-10 lg:py-[100px] sm:py-[75px] py-[50px]">
-        <DynamicCarousel id="popularThisWeek" title="Popular This Week" isCategory data={displayedPopCategories} />
+        <DynamicCarousel id="popularThisMonth" title="Popular This Month" isCategory data={displayedPopCategories} />
       </section>
       <Description isBgPrimary={false} title="Beyond the Beaches: Discover Bali’s Exquisite Jewelry" desc="Beyond its stunning beaches and vibrant culture, Bali, the captivating Indonesian island, boasts a rich tradition of handcrafted jewelry making that incorporates elements of Hinduism, local folklore, and nature. Balinese authentic jewelry is known for its intricate craftsmanship, unique designs, and deep cultural significance." />
       {/* design introduction */}
@@ -55,16 +55,18 @@ export default async function Home() {
       <section id="testimonialsSection" className="lg:px-10 sm:px-[30px] px-5 lg:pt-[100px] sm:pt-[75px] pt-[50px] lg:pb-[52px] sm:pb-[39px] pb-[26px]">
         <DynamicCarousel id="testimonials" title={["Testimonials", "What Our Client Say"]} isTestimonials data={testimonials} />
       </section>
-      <section className="bg-bs-primary--darker lg:pr-10 lg:flex lg:pb-0 pb-10">
-        <div className="flex-initial lg:w-[45%]">
+      <section className="bg-bs-primary--darker lg:pr-10 md:pr-5 md:flex md:pb-0 pb-10">
+        <div className="flex-initial md:w-[45%]">
           <Image src="/imgs/footer-cta.jpg" alt="CTA Image" width={542} height={379} className="h-full w-full object-cover" />
         </div>
-        <div className="lg:ml-10 lg:py-24 flex-initial lg:w-[55%] lg:px-10 sm:px-[30px] px-5 lg:mt-0 sm:mt-10 mt-5">
-          <div className="text-white lg:mb-10 mb-5">
-            <h2 className={`${crimsonText.className} lg:text-[36px] sm:text-[34px] text-[32px] lg:mb-2 sm:mb-1.5 mb-1 !font-bold`}>Embrace Bali&lsquo;s Essence Today!</h2>
-            <p className="lg:text-base sm:text-sm text-xs font-light">Carry the spirit of Bali with you through our intricately crafted bracelets. Explore our collection and let the magic of Bali adorn your wrist!</p>
+        <div className="flex items-center lg:ml-10 md:ml-5 lg:py-24 md:py-[72px] flex-initial md:w-[55%] lg:px-10 md:px-5 sm:px-[30px] px-5 md:mt-0 sm:mt-10 mt-5">
+          <div>
+            <div className="text-white md:mb-10 mb-5">
+              <h2 className={`${crimsonText.className} lg:text-[36px] sm:text-[34px] text-[32px] lg:mb-2 sm:mb-1.5 mb-1 !font-bold`}>Embrace Bali&lsquo;s Essence Today!</h2>
+              <p className="lg:text-base sm:text-sm text-xs font-light">Carry the spirit of Bali with you through our intricately crafted bracelets. Explore our collection and let the magic of Bali adorn your wrist!</p>
+            </div>
+            <Button />
           </div>
-          <Button />
         </div>
       </section >
     </>

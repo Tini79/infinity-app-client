@@ -42,7 +42,7 @@ export async function getCategorySlug(slug: string){
 
 export async function getPopularCategories() {
   try {
-    const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/popular-categories`)
+    const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/popular-categories`)    
     return data.data
   } catch (error) {
     console.error('Database Error:', error);

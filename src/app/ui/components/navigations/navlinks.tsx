@@ -43,13 +43,11 @@ export default function NavLinks({ icon, href, isPhone = false, isEmail = false,
                     {menu.name}
                   </Link>
                 </li>
-              ))
-              }
+              ))}
             </ul>
           </div>
         </>
-      )
-      }
+      )}
     </>
   )
 }

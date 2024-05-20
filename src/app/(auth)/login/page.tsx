@@ -35,12 +35,12 @@ export default function Login() {
             <>
               <div>
                 <div className="lg:mb-4 sm:mb-[14px] mb-2">
-                  <label htmlFor="username" className="block lg:text-sm sm:text-xs text-[10px]">Username</label>
-                  <input required type="text" id="username" name="username" className="w-full md:border-2 border border-bs-third--lighter focus:outline-0 focus:border-bs-third py-0.5 px-1 lg:h-8 sm:h-[30px] h-7 lg:text-base sm:text-sm text-xs" />
+                  <label htmlFor="username" id="usernameLabel" className="block lg:text-sm sm:text-xs text-[10px]">Username</label>
+                  <input required type="text" aria-labelledby="usernameLabel" id="username" name="username" className="w-full md:border-2 border border-bs-third--lighter focus:outline-0 focus:border-bs-third py-0.5 px-1 lg:h-8 sm:h-[30px] h-7 lg:text-base sm:text-sm text-xs" />
                 </div>
                 <div className="">
-                  <label htmlFor="password" className="block lg:text-sm sm:text-xs text-[10px]">Password</label>
-                  <input required type="password" id="password" name="password" className="w-full md:border-2 border border-bs-third--lighter focus:outline-0 focus:border-bs-third py-0.5 px-1 lg:h-8 sm:h-[30px] h-7 lg:text-base sm:text-sm text-xs" />
+                  <label htmlFor="password" id="passwordLabel" className="block lg:text-sm sm:text-xs text-[10px]">Password</label>
+                  <input required type="password" aria-labelledby="passwordLabel" id="password" name="password" className="w-full md:border-2 border border-bs-third--lighter focus:outline-0 focus:border-bs-third py-0.5 px-1 lg:h-8 sm:h-[30px] h-7 lg:text-base sm:text-sm text-xs" />
                 </div>
               </div>
             </>

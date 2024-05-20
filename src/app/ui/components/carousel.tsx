@@ -161,8 +161,8 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
             {((isCategory || isProduct) && showSliderBtn) && (
               <>
                 <div className="flex-initial w-1/4 flex justify-end lg:gap-5 sm:gap-[15px] gap-2.5">
-                  <button disabled={isStartLimit} onClick={() => onClickSlider(false)}><FontAwesomeIcon icon={faCircleChevronLeft} className="slider-icon lg:text-2xl sm:text-[22px] text-xl text-bs-third--lighter hover:text-bs-third" /></button>
-                  <button disabled={isEndLimit} onClick={() => onClickSlider(true)}><FontAwesomeIcon icon={faCircleChevronRight} className="slider-icon lg:text-2xl sm:text-[22px] text-xl text-bs-third--lighter hover:text-bs-third" /></button>
+                  <button aria-pressed="true" disabled={isStartLimit} onClick={() => onClickSlider(false)}><FontAwesomeIcon icon={faCircleChevronLeft} className="slider-icon lg:text-2xl sm:text-[22px] text-xl text-bs-third--lighter hover:text-bs-third" /></button>
+                  <button aria-pressed="true" disabled={isEndLimit} onClick={() => onClickSlider(true)}><FontAwesomeIcon icon={faCircleChevronRight} className="slider-icon lg:text-2xl sm:text-[22px] text-xl text-bs-third--lighter hover:text-bs-third" /></button>
                 </div>
               </>
             )}
@@ -274,8 +274,8 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
       {((isTestimonials || isAllProducts) && showSliderBtn) && (
         <>
           <div className="lg:mt-5 sm:mt-[15px] mt-2.5 flex w-full justify-end lg:gap-5 sm:gap-[15px] gap-2.5">
-            <button disabled={isStartLimit} onClick={() => onClickSlider(false)}><FontAwesomeIcon icon={faCircleChevronLeft} className="slider-icon lg:text-2xl sm:text-[22px] text-xl text-bs-third--lighter hover:text-bs-third" /></button>
-            <button disabled={isEndLimit} onClick={() => onClickSlider(true)}><FontAwesomeIcon icon={faCircleChevronRight} className="slider-icon lg:text-2xl sm:text-[22px] text-xl text-bs-third--lighter hover:text-bs-third" /></button>
+            <button aria-pressed="true" disabled={isStartLimit} onClick={() => onClickSlider(false)}><FontAwesomeIcon icon={faCircleChevronLeft} className="slider-icon lg:text-2xl sm:text-[22px] text-xl text-bs-third--lighter hover:text-bs-third" /></button>
+            <button aria-pressed="true" disabled={isEndLimit} onClick={() => onClickSlider(true)}><FontAwesomeIcon icon={faCircleChevronRight} className="slider-icon lg:text-2xl sm:text-[22px] text-xl text-bs-third--lighter hover:text-bs-third" /></button>
           </div>
         </>
       )}

@@ -34,10 +34,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default async function Category({ params }: { params: { slug: string } }) {  
+export default async function Category({ params }: { params: { slug: string } }) {
   const imageUrl = `/imgs/categories/${params.slug}.jpg`;
   const products = await getProductsByCategory(params.slug)
   const { materialDescTitle, triHitaKarana, slug } = require("@/app/lib/placeholder-data")
+  const DynamicCarousel = dynamic(() => import("../../../ui/components/carousel"), { ssr: false })
+  const DynamicSlickCarousel = dynamic(() => import("../../../ui/components/slick"), { ssr: false })
   let mostPopProducts = []
   for (let i = 0; i < products.details.length; i++) {
     if (products.details[i].total_rate) {
@@ -50,7 +52,7 @@ export default async function Category({ params }: { params: { slug: string } })
   for (let i = 0; i < categories.length; i++) {
     if (!(categories[i].slug == params.slug)) anotherCategories.push(categories[i])
   }
-  const DynamicCarousel = dynamic(() => import("../../../ui/components/carousel"), { ssr: false })
+
   const titleArr = products.data.name.split(' ')
   const subTitle = titleArr[titleArr.length - 1]
   titleArr.pop()
@@ -86,7 +88,7 @@ export default async function Category({ params }: { params: { slug: string } })
       {/* product explanation */}
       <section className="lg:py-20 sm:py-[60px] py-10 md:px-0 lg:px-10 sm:px-[30px] px-5">
         <div className="md:flex items-center">
-          <Image src={`/${products.data.path}`} alt={`${title} Bracelet Collections`} width={630} height={450} className="md:w-1/2 w-full" />
+          <Image src={`/${products.data.path}`} alt={`${title} Bracelet Collections`} title={`${title} Bracelet Collections`} width={630} height={450} className="md:w-1/2 w-full" />
           <div className="lg:mx-10 md:mx-5 md:mt-0 sm:mt-10 mt-5">
             <h2 className={`${crimsonText.className} lg:text-[36px] sm:text-[34px] text-[32px] lg:mb-4 sm:mb-3 mb-2 !font-bold`}>{products.data.title_desc2}</h2>
             <p className="text-justify lg:text-base sm:text-sm text-xs">{products.data.desc2}</p>
@@ -102,7 +104,7 @@ export default async function Category({ params }: { params: { slug: string } })
       {/* all products */}
       <ProductSection products={products}></ProductSection>
       <section className="lg:px-10 px-5 lg:py-20 py-10 bg-bs-fourth bg-opacity-[2%]">
-        <DynamicCarousel id="seeAlso" data={anotherCategories} title="See Also" isCategory />
+        <DynamicSlickCarousel id="seeAlso" data={anotherCategories} title="See Also" isCategory />
       </section>
     </>
   )

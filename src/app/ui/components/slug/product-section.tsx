@@ -30,7 +30,7 @@ export default function ProductSection({ products }: ProductSectionProps) {
             <section>
               <div className="md:flex lg:gap-8 xs:gap-4 items-center">
                 <div className="flex-initial md:w-1/2">
-                  <Image src={`/${selectedProduct.path}`} alt={selectedProduct.name} width={550} height={464} className="md:w-full w-[90%] mx-auto lg:h-[464px] md:h-[300px] md:mb-0 mb-2 object-cover" />
+                  <Image src={`/${selectedProduct.path}`} alt={selectedProduct.name} title={selectedProduct.name} width={550} height={464} className="md:w-full w-[90%] mx-auto lg:h-[464px] md:h-[300px] md:mb-0 mb-2 object-cover" />
                 </div>
                 <div className="flex-initial md:w-1/2 w-[90%] mx-auto">
                   <div>

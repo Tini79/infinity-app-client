@@ -127,7 +127,7 @@ export default function Navbar() {
               }
             </div >
             <Link href={navMenus[0].href} className="flex justify-center mx-auto">
-              <Image id="navbarLogo" src="/imgs/brand-logo-darker.png" aria-label="Infinity Pritty Jewellery Logo" alt="Infinity Pritty Jewellery Logo" width={191} height={91} className={logoSize} priority />
+              <Image id="navbarLogo" src="/imgs/brand-logo-darker.png" aria-label="Infinity Pritty Jewellery Logo" alt="Infinity Pritty Jewellery Logo" title="Infinity Pritty Jewellery Logo" width={191} height={91} className={logoSize} priority />
             </Link>
             <div className="hidden sm:flex flex-1 justify-end items-center lg:gap-10 gap-5">
               {navMenus.map((menu: any, i: number) => i > 1 && (
@@ -155,7 +155,7 @@ export default function Navbar() {
           </button>
         </div>
         <div>
-          <Image onClick={toggleSideMenu} id="sidebarLogo" aria-label="Infinity Pritty Jewellery Logo" src="/imgs/brand-logo.png" alt="Infinity Pritty Jewellery Logo" width={199} height={99} className="mx-auto mt-10 mb-16 w-[199px]" />
+          <Image onClick={toggleSideMenu} id="sidebarLogo" aria-label="Infinity Pritty Jewellery Logo" src="/imgs/brand-logo.png" alt="Infinity Pritty Jewellery Logo" title="Infinity Pritty Jewellery Logo" width={199} height={99} className="mx-auto mt-10 mb-16 w-[199px]" />
           <div>
             <ul className="text-center">
               {navMenus.map((menu: any, i: number) => (

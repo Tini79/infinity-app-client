@@ -176,7 +176,7 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
             <>
               <div key={`imageOfCategory-${i}`} id={`image${i}`} className="relative xl:w-[calc((100vw-112px)/3)] lg:w-[calc((100vw-96px)/2)] md:w-[calc((100vw-76px)/2)] sm:w-[calc((100vw-60px))] w-[calc((100vw-40px))] mx-auto" onMouseEnter={() => handleHover(i)} onMouseLeave={() => handleHover(null)}>
                 <Link href={`${url}/category/${image.href}`}>
-                  <Image src={`/${image.pop_path ? image.pop_path : image.path}`} alt={image.name} width={388} height={274} className="w-full h-full object-cover" />
+                  <Image src={`/${image.pop_path ? image.pop_path : image.path}`} alt={image.name} title={image.name} width={388} height={274} className="w-full h-full object-cover" />
                   <span className={clsx(`${crimsonText.className} absolute top-0 w-full h-full hover:bg-bs-fourth hover:bg-opacity-[56%] justify-center items-center !font-bold lg:text-lg sm:text-base text-sm text-white`, currDisplays[i])}>{image.name}</span>
                 </Link>
               </div>
@@ -185,7 +185,7 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
             <>
               <div key={image.code} id={image.code} className="relative xl:w-[calc((100vw-128px)/5)] lg:w-[calc((100vw-116px)/4)] md:w-[calc((100vw-72px)/3)] xs:w-[calc((100vw-52px)/2)] w-[calc((100vw-46px)/2)]">
                 <Link onClick={() => sendProduct(image.code)} href={`${url}/category/${slug}/#${image.code}`}>
-                  <Image src={`/${image.path}`} alt={image.name} width={272} height={248} className="w-full h-full object-cover" />
+                  <Image src={`/${image.path}`} alt={image.name} title={image.name} width={272} height={248} className="w-full h-full object-cover" />
                 </Link>
               </div>
             </>
@@ -194,7 +194,7 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
               <article key={`product-${image.code}`} className={clsx("xl:w-[calc((100vw-128px)/4)] lg:w-[calc((100vw-112px)/3)] md:w-[calc((100vw-92px)/3)] sm:w-[calc((100vw-66px)/2)] w-[calc((100vw-48px)/2)] lg:p-2 sm:p-1.5 p-1", productCardCls)}>
                 <section className="relative h-full">
                   <div className="md:h-3/5 xs:h-2/3 h-[48%] lg:mb-2 sm:mb-1.5 mb-1">
-                    <Image src={`/${image.path}`} alt={image.name} width={388} height={274} className="w-full h-full object-cover" />
+                    <Image src={`/${image.path}`} alt={image.name} title={image.name} width={388} height={274} className="w-full h-full object-cover" />
                   </div>
                   <div className="lg:mb-4 sm:mb-3 mb-2">
                     <h4 className={`${crimsonText.className} lg:text-lg sm:text-base text-sm !leading-tight !font-bold lg:mb-2 sm:mb-1.5 mb-1`}>{image.name}</h4>
@@ -222,7 +222,7 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
               <div key={`category-${image.id}`} className="relative xl:h-[338px] lg:h-[300px] md:h-[230px] sm:h-[188px] xs:h-[316px] h-[200px]" onMouseEnter={() => handleHover(i)} onMouseLeave={() => { handleHover(null) }}>
                 <Link href={`${url}/category/${image.href}`}>
                   <span className={clsx("absolute w-full h-full bg-bs-fourth top-0 bg-opacity-[56%]", currDisplays[i])}></span>
-                  <Image src={`/${image.path}`} alt={image.name} width={590} height={338} className="w-full h-full object-cover"></Image>
+                  <Image src={`/${image.path}`} alt={image.name} title={image.name} width={590} height={338} className="w-full h-full object-cover"></Image>
                   <div className={clsx(`${crimsonText.className} absolute lg:left-8 sm:left-6 left-4 inset-y-1/2 text-white hover:text-bs-secondary !font-bold lg:text-2xl sm:text[22px] text-xl`, currDisplays[i])}><span className=" underline lg:underline-offset-8 sm:underline-offset-[6px] underline-offset-4 ">{image.name.slice(0, 3)}</span>{(image.name.slice(3, 4) == " ") ? <>&nbsp;{image.name.slice(4)}</> : image.name.slice(3)}</div>
                 </Link>
               </div>
@@ -232,7 +232,7 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
               <article key={`testimonial-${image.id}`} className="lg:w-[calc((100vw-148px)/3)] sm:w-[calc((100vw-83px)/2)] xs:w-[calc((100vw-63px)/2)] w-[calc((100vw-48px))] lg:px-4 sm:px-3 px-2 lg:pt-4 sm:pt-3 pt-2 lg:pb-6 sm:pb-[18px] pb-3 mx-auto hover:shadow-[0_0_4px_0_rgba(51,44,17,0.16)]">
                 <section className="h-full relative">
                   <div className="h-1/2 lg:mb-2 sm:mb-1.5 mb-1">
-                    <Image src={`/${image.path}`} alt={image.name} width={348} height={313} className="w-full h-full object-cover" />
+                    <Image src={`/${image.path}`} alt={image.name} title={image.name} width={348} height={313} className="w-full h-full object-cover" />
                   </div>
                   <div className="text-center">
                     <span className="lg:text-sm sm:text-xs text-[10px] text-bs-third opacity-50">{image.customer_name}</span>
@@ -258,7 +258,7 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
               <div key={`material-${image.id}`} className="w-full mx-auto">
                 <article>
                   <section>
-                    <Image src={`/${image.path}`} alt={image.material} width={340} height={300} className="lg:mb-2 sm:mb-1.5 mb-1 w-full h-full" />
+                    <Image src={`/${image.path}`} alt={image.material} title={image.material} width={340} height={300} className="lg:mb-2 sm:mb-1.5 mb-1 w-full h-full" />
                     <div className="text-center">
                       <h4 className={`${crimsonText.className} lg:mb-2 sm:mb-1.5 mb-1`}>{image.material}</h4>
                       <p className="font-light lg:text-sm sm:text-xs text-[10px]">{image.material_detail}</p>

@@ -27,7 +27,7 @@ export default async function Home() {
       </section >
       <section className="bg-bs-primary sm:p-20 p-10 lg:flex">
         <div className="flex-1">
-          <Image src="/imgs/brand-logo.png" alt="Infinity Pritty Jewellery Logo" width={368} height={176} className="xl:w-[368px] md:w-[318px] w-[245px] xl:h-[176px] md:h-[152px] h-[117px] lg:m-0 mx-auto lg:mb-0 mb-6" />
+          <Image src="/imgs/brand-logo.png" alt="Infinity Pritty Jewellery Logo" title="Infinity Pritty Jewellery Logo" width={368} height={176} className="xl:w-[368px] md:w-[318px] w-[245px] xl:h-[176px] md:h-[152px] h-[117px] lg:m-0 mx-auto lg:mb-0 mb-6" />
         </div>
         <div className="flex-1 flex items-center">
           <p className="lg:text-sm sm:text-xs text-[10px] lg:leading-6 sm:leading-5 leading-4 text-white text-justify">Founded in 2021, Infinity Pritty Jewellery Wear strives to introduce the world to the beauty of Balinese culture through our unique jewelry. We bridge the gap between traditional Balinese culture and modern fashion, allowing everyone to experience the &ldquo;goodness of Bali&ldquo; through our vibrant and spiritually inspired designs.</p>
@@ -40,7 +40,7 @@ export default async function Home() {
       {/* design introduction */}
       <section className="lg:px-10 sm:px-[30px] px-5 lg:py-20 sm:py-[60px] py-10 md:flex items-center">
         <div className="flex-1 flex justify-center md:mb-0 sm:mb-10 mb-5">
-          <Image src="/imgs/design-introduction.jpg" alt="Bracelets Collections" width={550} height={618} className="md:w-[550px] w-[376px] h-full" />
+          <Image src="/imgs/design-introduction.jpg" alt="Bracelets Collections" title="Bracelets Collections" width={550} height={618} className="md:w-[550px] w-[376px] h-full" />
         </div>
         <div className="lg:ml-10 md:ml-5 flex-1">
           <h2 className={`${crimsonText.className} lg:text-[36px] sm:text-[34px] text-[32px] lg:mb-4 sm:mb-3 mb-2 !font-bold`}>Introduce About Our Design</h2>
@@ -57,7 +57,7 @@ export default async function Home() {
       </section>
       <section className="bg-bs-primary--darker lg:pr-10 md:pr-5 md:flex md:pb-0 pb-10">
         <div className="flex-initial md:w-[45%]">
-          <Image src="/imgs/footer-cta.jpg" alt="CTA Image" width={542} height={379} className="h-full w-full object-cover" />
+          <Image src="/imgs/footer-cta.jpg" alt="CTA Image" title="CTA Image" width={542} height={379} className="h-full w-full object-cover" />
         </div>
         <div className="flex items-center lg:ml-10 md:ml-5 lg:py-24 md:py-[72px] flex-initial md:w-[55%] lg:px-10 md:px-5 sm:px-[30px] px-5 md:mt-0 sm:mt-10 mt-5">
           <div>

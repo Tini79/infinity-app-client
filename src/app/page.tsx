@@ -8,6 +8,7 @@ import dynamic from "next/dynamic";
 
 // TODO: coba lagi check pada carousel n testi: height foto tidak sesuai dg design
 export default async function Home() {
+  // await checkSession()
   const categories = await getCategories()
   const popCategories = await getPopularCategories()
   const displayedPopCategories = []

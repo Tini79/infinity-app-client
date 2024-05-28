@@ -20,15 +20,16 @@ export default function NavigationProvider({ children }: { children: React.React
   const pathname = usePathname()
   // const [isAuth, setIsAuth] = useState(false)
 
-  if (pathname !== "/login" && pathname !== "/registration") {
+  if (pathname !== "/login" && pathname !== "/registration" && pathname !== "/logout") {
+    // TODO: ketika token sudah expired dan pindah ke page lain, ini proses buat logout kan jalan, tapi perpindahan page berhasil jalan dengan kondisi page yg menampilkan navbar sma footer doang nih, coba cari cara untuk solve ya biar tampilannya owke gitu
     return (
       <>
         <GlobalContext.Provider value={{ pathname }}>
           <Navbar></Navbar>
           {children}
-          <Suspense fallback="loading...">
-            <Footer></Footer>
-          </Suspense>
+          {/* <Suspense fallback="loading..."> */}
+          <Footer></Footer>
+          {/* </Suspense> */}
         </GlobalContext.Provider>
       </>
     );

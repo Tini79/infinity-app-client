@@ -99,7 +99,7 @@ export default function Slick({ id, title, data, isCategory = false, isProduct =
       setUrl(new URL(window.location.href).origin)
       // }
     }
-  })
+  }, [])
 
   // GENERAL
   function handleHover(index?: any) {

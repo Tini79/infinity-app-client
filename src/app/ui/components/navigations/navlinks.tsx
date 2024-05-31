@@ -1,6 +1,8 @@
+"use client"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 interface NavLinks {
   icon?: any,
@@ -16,6 +18,17 @@ interface NavLinks {
 }
 // TODO: mungkin untuk parameter yg diterima bisa dipersingkat
 export default function NavLinks({ icon, href, isPhone = false, isEmail = false, val, customCls, footerMenus = [], footerMenuTitle, hasIcon = false }: NavLinks) {
+  const [url, setUrl] = useState("")
+
+  // HOOK
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // const handleResize = () => {
+      // setCurrWindowWidth(window.innerWidth)
+      setUrl(new URL(window.location.href).origin)
+      // }
+    }
+  }, [])
   return (
     <>
       {!(footerMenus.length > 0) ? (
@@ -36,7 +49,7 @@ export default function NavLinks({ icon, href, isPhone = false, isEmail = false,
               {footerMenus.map((menu, i) => (
                 // TODO: coba cek ya navlink categori di footer
                 <li key={i}>
-                  <Link href={`${menu.isEmail ? "mailto:" + menu.href : menu.isPhone ? "tel:" + menu.href : footerMenuTitle == "Categories" ? "category/" + menu.href : menu.href}`} className={clsx("lg:text-sm sm:text-xs text-[10px] lg:mb-2 sm:mb-1.5 mb-1 hover:text-bs-secondary--darker", { "flex": hasIcon })}>
+                  <Link href={`${menu.isEmail ? "mailto:" + menu.href : menu.isPhone ? "tel:" + menu.href : footerMenuTitle == "Categories" ? `${url}/category/` + menu.href : menu.href}`} className={clsx("lg:text-sm sm:text-xs text-[10px] lg:mb-2 sm:mb-1.5 mb-1 hover:text-bs-secondary--darker", { "flex": hasIcon })}>
                     {hasIcon && (
                       <FontAwesomeIcon icon={menu.icon} className="me-2 lg:text-base sm:text-sm text-xs"></FontAwesomeIcon>
                     )}

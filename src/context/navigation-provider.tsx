@@ -25,10 +25,10 @@ export default function NavigationProvider({ children }: { children: React.React
     return (
       <>
         <GlobalContext.Provider value={{ pathname }}>
-          <Navbar></Navbar>
+          {/* <Navbar></Navbar> */}
           {children}
           {/* <Suspense fallback="loading..."> */}
-          <Footer></Footer>
+          {/* <Footer></Footer> */}
           {/* </Suspense> */}
         </GlobalContext.Provider>
       </>

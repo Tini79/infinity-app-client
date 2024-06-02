@@ -1,9 +1,25 @@
 "use server"
 import axios from "axios"
 import { revalidatePath } from "next/cache"
-import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 import { getHeaders } from "./services"
+import { GetServerSideProps } from "next"
+
+// export const getServerSideProps = (async () => {
+//   const options = getHeaders()
+//   try {
+//     const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/categories`, options)
+//     const repo = data.data
+//     return { props: { repo } }
+//   } catch (error: any) {
+//     if (error.response.data.statusCode == 401) {
+//       revalidatePath("/logout")
+//       redirect("/logout")
+//     } else {
+//       throw new Error('Failed to fetch category data.');
+//     }
+//   }
+// }) satisfies GetServerSideProps<{ repo: any }>
 
 export async function getCategories() {
   const options = getHeaders()
@@ -83,8 +99,11 @@ export async function getProductsByCategory(slug: string) {
     if (error.response.data.statusCode == 401) {
       revalidatePath("/logout")
       redirect("/logout")
-    } else {
-      throw new Error('Failed to fetch product data by category.');
+    } else if (error.response.data.statusCode == 404) {
+      // due to I revert the data using slug
+      revalidatePath("/404")
+      redirect("/404")
+      // throw new Error('Failed to fetch product data by category.');
     }
   }
 }

@@ -81,10 +81,12 @@ export async function getTestimonials() {
     const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/testimonials`, options)
     return data.data
   } catch (error: any) {
+    console.log(error);
     if (error.response.data.statusCode == 401) {
       revalidatePath("/logout")
       redirect("/logout")
     } else {
+      
       throw new Error('Failed to fetch testimonial data.');
     }
   }

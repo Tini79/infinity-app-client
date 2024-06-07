@@ -54,8 +54,8 @@ export default async function Category({ params }: { params: { slug: string } })
   }
 
   const titleArr = products.data.name.split(' ')
-  const subTitle = titleArr[titleArr.length - 1]
-  titleArr.pop()
+  const subTitle = products.data.id != 7 ? titleArr[titleArr.length - 1] : titleArr.slice(2, 5).toString().replace(/[\s,]/g, ' ')
+  products.data.id != 7 ? titleArr.pop() : titleArr.splice(-3)
   const title = titleArr.toString().replace(/[\s,]/g, ' ')
 
   return (

@@ -12,6 +12,8 @@ interface CarouselProps {
   id: string,
   title?: any,
   data: any,
+  productName?: string,
+  productId?: any,
   isCategory?: boolean,
   isProduct?: boolean,
   isAllProducts?: boolean,
@@ -23,7 +25,7 @@ interface CarouselProps {
   sendProduct?: any
 }
 
-export default function Carousel({ id, title, data, isCategory = false, isProduct = false, isAllProducts = false, isAllCategories = false, isTestimonials = false, productCardCls = "", isAuth = null, slug, sendProduct }: CarouselProps) {
+export default function Carousel({ id, title, data, productName, productId, isCategory = false, isProduct = false, isAllProducts = false, isAllCategories = false, isTestimonials = false, productCardCls = "", isAuth = null, slug, sendProduct }: CarouselProps) {
   const [currWindowWidth, setCurrWindowWidth] = useState(window.innerWidth)
   const [url, setUrl] = useState("")
   const displays: any = []
@@ -209,7 +211,7 @@ export default function Carousel({ id, title, data, isCategory = false, isProduc
                   </div>
                   <div className="absolute w-full bottom-0">
                     {isAuth ? (
-                      <Button btnType="btn-product" isAuth />
+                      <Button btnType="btn-product" productName={productName} productId={productId} isAuth />
                     ) : (
                       <Button btnType="btn-product" />
                     )}

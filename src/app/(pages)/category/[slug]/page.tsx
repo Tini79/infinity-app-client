@@ -63,7 +63,7 @@ export default async function Category({ params }: { params: { slug: string } })
       <section id="categoryHero" className="bg-[url('/imgs/categories/${params.slug}.jpg')] relative h-screen w-full bg-center flex items-center lg:mb-20 sm:mb-[60px] mb-10 bg-cover bg-no-repeat" style={{ backgroundImage: `url(${imageUrl})` }}>
         <Hero isHomepage={false} title={title} subTitle={subTitle} />
       </section >
-      <ProductsCarousel id="newArrivals" title="New Arrivals" data={products.details} isProduct productCardCls="bg-bs-fourth bg-opacity-[2%]" custCls={clsx({ "lg:mb-20 sm:mb-[60px] mb-10": products.data.title_desc1 })} />
+      <ProductsCarousel id="newArrivals" title="New Arrivals" data={products.details} productName={products.data.name} productId={products.data.id} isProduct productCardCls="bg-bs-fourth bg-opacity-[2%]" custCls={clsx({ "lg:mb-20 sm:mb-[60px] mb-10": products.data.title_desc1 })} />
       {products.data.title_desc1 && (
         <Description isBgPrimary title={products.data.title_desc1} desc={products.data.desc1}>
           {params.slug == slug[0].triHitaKaranaBracelets && (

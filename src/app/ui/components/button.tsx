@@ -1,19 +1,36 @@
 "use client"
 import Link from "next/link";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../../context/navigation-provider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBasketShopping } from "@fortawesome/free-solid-svg-icons";
+import clsx from "clsx";
 // TODO: boleh nanti tambahin props buat nampung text nih ama link and so on
 interface ButtonProps {
   btnType?: string,
-  isAuth?: boolean
+  isAuth?: boolean,
+  productName?: string,
+  productId?: any
 }
-export default function Button({ btnType, isAuth = false }: ButtonProps) {
+export default function Button({ btnType, isAuth = false, productName, productId }: ButtonProps) {
   const { pathname } = useContext(GlobalContext)
   const { contacts } = require("@/app/lib/placeholder-data")
   const [showOrderDetail, setShowOrderDetail] = useState(false)
   const [orderAmount, setOrderAmount] = useState(0)
+  const [displayedName, setDisplayedName] = useState<string | undefined>()
+
+  // HOOK
+  useEffect(() => {
+    if (orderAmount <= 1 && productId != 7) {
+      setDisplayedName(productName?.slice(0, -1))
+    } else {
+      if (productId == 7) {
+        setDisplayedName("Set Packs of Necklace and Bracelets")
+      } else {
+        setDisplayedName(productName)
+      }
+    }
+  }, [orderAmount, displayedName])
 
   const onClickOrder = () => {
     setShowOrderDetail(!showOrderDetail)
@@ -26,6 +43,7 @@ export default function Button({ btnType, isAuth = false }: ButtonProps) {
   const onChangeOrderVal = (val: string) => {
     setOrderAmount(parseInt(val))
   }
+
   return (
     <>
       {btnType == "btn-group" ? (
@@ -58,18 +76,20 @@ export default function Button({ btnType, isAuth = false }: ButtonProps) {
                 {showOrderDetail ? (
                   <ul className="w-full flex justify-between text-sm">
                     <li className="flex items-center justify-center bg-bs-secondary text-bs-primary--darker w-full hover:bg-bs-secondary--darker lg:h-12 sm:h-9 h-6 lg:py-3 sm:py-[9px] py-1.5">
-                      <Link onClick={onClickDirect} href={contacts[2].href} className="flex items-center">
+                      {/* wa */}
+                      <Link onClick={onClickDirect} href={`${contacts[2].href}?text=Hi there! I would like to order ${orderAmount} ${displayedName}.`} target="blank" className="flex items-center">
                         <FontAwesomeIcon icon={contacts[2].icon} className="lg:text-lg sm:text-base text-sm"></FontAwesomeIcon>
                       </Link>
                     </li>
                     <li className="flex items-center justify-center bg-bs-secondary text-bs-primary--darker w-full hover:bg-bs-secondary--darker lg:h-12 sm:h-9 h-6 lg:py-3 sm:py-[9px] py-1.5">
-                      <Link onClick={onClickDirect} href={"mailto" + contacts[1].href} className="flex items-center">
+                      {/* email */}
+                      <Link onClick={onClickDirect} href={`${contacts[1].href}?subject=Order Confirmation&body=Hi there! I would like to order ${orderAmount} ${displayedName}.`} target="blank" className="flex items-center">
                         <FontAwesomeIcon icon={contacts[1].icon} className="lg:text-lg sm:text-base text-sm"></FontAwesomeIcon>
                       </Link>
                     </li>
                   </ul>
                 ) : (
-                  <button aria-pressed="true" aria-label="order button" onClick={onClickOrder} className="lg:text-base sm:text-sm text-xs bg-bs-secondary text-bs-primary--darker w-full hover:bg-bs-secondary--darker lg:h-12 sm:h-9 h-6 lg:py-3 sm:py-[9px] py-1.5 flex items-center justify-center">Order</button>
+                  <button disabled={orderAmount <= 0} aria-pressed="true" aria-label="order button" onClick={onClickOrder} className={clsx("lg:text-base sm:text-sm text-xs bg-bs-secondary text-bs-primary--darker w-full lg:h-12 sm:h-9 h-6 lg:py-3 sm:py-[9px] py-1.5 flex items-center justify-center", { "hover:bg-bs-secondary--darker": orderAmount > 0 })}>Order</button>
                 )}
               </div>
             </div>

@@ -15,6 +15,8 @@ interface CarouselProps {
   id: string,
   title?: any,
   data: any,
+  productName?: string,
+  productId?: any,
   isCategory?: boolean,
   isProduct?: boolean,
   isAllProducts?: boolean,
@@ -26,7 +28,7 @@ interface CarouselProps {
   sendProduct?: any
 }
 
-export default function Slick({ id, title, data, isCategory = false, isProduct = false, isAllProducts = false, isAllCategories = false, isTestimonials = false, productCardCls = "", isAuth = null, slug, sendProduct }: CarouselProps) {
+export default function Slick({ id, title, data, productName, productId, isCategory = false, isProduct = false, isAllProducts = false, isAllCategories = false, isTestimonials = false, productCardCls = "", isAuth = null, slug, sendProduct }: CarouselProps) {
   var settings = isProduct ? {
     speed: 500,
     dots: data.length > 4,
@@ -154,7 +156,7 @@ export default function Slick({ id, title, data, isCategory = false, isProduct =
                     </div>
                     <div className="absolute w-full bottom-0">
                       {isAuth ? (
-                        <Button btnType="btn-product" isAuth />
+                        <Button btnType="btn-product" productName={productName} productId={productId} isAuth />
                       ) : (
                         <Button btnType="btn-product" />
                       )}
@@ -167,7 +169,7 @@ export default function Slick({ id, title, data, isCategory = false, isProduct =
             // isCategory's
             <div key={`imageOfCategory-${i}`} id={`image${i}`} className="md:px-2 px-1" onMouseEnter={() => handleHover(i)} onMouseLeave={() => handleHover(null)}>
               <div className="relative xl:h-[274px] lg:h-[288px] md:h-[220px] xs:h-[324px] h-[214px]">
-                <Link href={`${url}/category/${image.href}`}>
+                <Link href={`${url}/category/${image.slug}`}>
                   <Image src={`/${image.pop_path ? image.pop_path : image.path}`} alt={image.name} title={image.name} width={388} height={274} className="w-full h-full object-cover" />
                   <span className={clsx(`${crimsonText.className} absolute top-0 w-full h-full hover:bg-bs-fourth hover:bg-opacity-[56%] justify-center items-center !font-bold lg:text-lg sm:text-base text-sm text-white`, currDisplays[i])}>{image.name}</span>
                 </Link>

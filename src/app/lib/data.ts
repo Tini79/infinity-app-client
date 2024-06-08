@@ -12,7 +12,7 @@ import { GetServerSideProps } from "next"
 //     const repo = data.data
 //     return { props: { repo } }
 //   } catch (error: any) {
-//     if (error.response.data.statusCode == 401) {
+//     if (error.response?.data.statusCode == 401) {
 //       revalidatePath("/logout")
 //       redirect("/logout")
 //     } else {
@@ -27,7 +27,7 @@ export async function getCategories() {
     const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/categories`, options)
     return data.data
   } catch (error: any) {
-    if (error.response.data.statusCode == 401) {
+    if (error.response?.data.statusCode == 401) {
       revalidatePath("/logout")
       redirect("/logout")
     } else {
@@ -51,7 +51,7 @@ export async function getCategorySlug(slug: string) {
     const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/slug/${slug}`, options)
     return data.data
   } catch (error: any) {
-    if (error.response.data.statusCode == 401) {
+    if (error.response?.data.statusCode == 401) {
       revalidatePath("/logout")
       redirect("/logout")
     } else {
@@ -66,7 +66,7 @@ export async function getPopularCategories() {
     const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/popular-categories`, options)
     return data.data
   } catch (error: any) {
-    if (error.response.data.statusCode == 401) {
+    if (error.response?.data.statusCode == 401) {
       revalidatePath("/logout")
       redirect("/logout")
     } else {
@@ -81,11 +81,10 @@ export async function getTestimonials() {
     const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/testimonials`, options)
     return data.data
   } catch (error: any) {
-    if (error.response.data.statusCode == 401) {
+    if (error.response?.data.statusCode == 401) {
       revalidatePath("/logout")
       redirect("/logout")
     } else {
-      
       throw new Error('Failed to fetch testimonial data.');
     }
   }
@@ -97,10 +96,10 @@ export async function getProductsByCategory(slug: string) {
     const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/category/${slug}`, options)
     return data.data
   } catch (error: any) {
-    if (error.response.data.statusCode == 401) {
+    if (error.response?.data.statusCode == 401) {
       revalidatePath("/logout")
       redirect("/logout")
-    } else if (error.response.data.statusCode == 404) {
+    } else if (error.response?.data.statusCode == 404) {
       // due to I revert the data using slug
       revalidatePath("/404")
       redirect("/404")

@@ -8,6 +8,8 @@ interface ProductCarouselProps {
   id: string,
   title: string,
   data: any,
+  productName?: string,
+  productId?: any,
   isProduct: boolean,
   productCardCls?: string,
   custCls: string
@@ -17,6 +19,8 @@ export default function ProductsCarousel({
   id,
   title,
   data,
+  productName,
+  productId,
   isProduct,
   productCardCls,
   custCls, }: ProductCarouselProps) {
@@ -25,7 +29,7 @@ export default function ProductsCarousel({
   return (
     <>
       <section className={clsx("lg:px-10 sm:px-[30px] px-5", custCls)}>
-        <DynamicCarousel id={id} title={title} data={data} isProduct={isProduct} productCardCls={productCardCls} isAuth={useAuthStatus()} />
+        <DynamicCarousel id={id} title={title} data={data} productName={productName} productId={productId} isProduct={isProduct} productCardCls={productCardCls} isAuth={useAuthStatus()} />
       </section>
     </>
   )

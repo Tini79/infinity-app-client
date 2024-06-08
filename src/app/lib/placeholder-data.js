@@ -4,14 +4,14 @@ import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 const contacts = [
   {
     icon: faPhone,
-    href: "+62881038440302",
+    href: "tel:+62881038440302",
     value: "+62 877 3550 4031",
     isPhone: true,
     name: "+62 877 3550 4031"
   },
   {
     icon: faEnvelope,
-    href: "admin@infinityprittyjewellery.com",
+    href: "mailto:admin@infinityprittyjewellery.com",
     value: "admin@infinityprittyjewellery.com",
     isEmail: true,
     name: "admin@infinityprittyjewellery.com"

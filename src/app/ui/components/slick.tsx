@@ -5,8 +5,6 @@ import Link from "next/link"
 import { useEffect, useMemo, useRef, useState } from "react"
 import clsx from "clsx"
 import Button from "./button"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCircleChevronLeft, faCircleChevronRight, faStar } from "@fortawesome/free-solid-svg-icons"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -149,7 +147,9 @@ export default function Slick({ id, title, data, productName, productId, isCateg
                         // TODO: incase ada diskon: yg atas untuk harga normal, yg bawah harga diskon
                         // {/* <s className="lg:text-[14px] sm:text-[12px] text-[10px] text-bs-fourth tracking-[1px] opacity-50">$222&nbsp;</s> */}
                         // TODO: mata uang ($) masih statis
-                        <span className="lg:text-[16px] sm:text-[14px] text-[12px] text-bs-fourth tracking-[1px]">${image.price}</span>
+                        <span className="lg:text-[16px] sm:text-[14px] text-[12px] text-bs-fourth tracking-[1px]">{image.curr_icon.replace(/&#(\d+);/g, (match: any, dec: any) =>{
+                          return String.fromCharCode(dec);
+                        })}{image.price}</span>
                       ) : (
                         <span className="lg:text-[12px] sm:text-[10px] text-[8px] text-red-600">*Price will be displayed after login</span>
                       )}
@@ -170,7 +170,7 @@ export default function Slick({ id, title, data, productName, productId, isCateg
             <div key={`imageOfCategory-${i}`} id={`image${i}`} className="md:px-2 px-1" onMouseEnter={() => handleHover(i)} onMouseLeave={() => handleHover(null)}>
               <div className="relative xl:h-[274px] lg:h-[288px] md:h-[220px] xs:h-[324px] h-[214px]">
                 <Link href={`${url}/category/${image.slug}`}>
-                  <Image src={`/${image.pop_path ? image.pop_path : image.path}`} alt={image.name} title={image.name} width={388} height={274} className="w-full h-full object-cover" />
+                  <Image src={`/${image.pop_path ? image.pop_path : image.path}`} alt={image.name} title={image.name} width={388} height={274} priority className="w-full h-full object-cover" />
                   <span className={clsx(`${crimsonText.className} absolute top-0 w-full h-full hover:bg-bs-fourth hover:bg-opacity-[56%] justify-center items-center !font-bold lg:text-lg sm:text-base text-sm text-white`, currDisplays[i])}>{image.name}</span>
                 </Link>
               </div>

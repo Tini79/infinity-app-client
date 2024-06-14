@@ -95,9 +95,11 @@ export default async function Category({ params }: { params: { slug: string } })
           </div>
         </div>
       </section>
-      <Description customSectionCls="lg:mb-20 sm:mb-[60px] mb-10 " isBgPrimary={false} hasCarousel title={params.slug == slug[0].triHitaKaranaBracelets ? materialDescTitle[0].triHitaKaranaBracelets : params.slug == slug[0].chipstoneBracelets ? materialDescTitle[0].chipstoneBracelets : params.slug == slug[0].redStringBracelets ? materialDescTitle[0].redStringBracelets : ""}>
-        <DynamicCarousel id="description" data={products.materials} />
-      </Description>
+      {(products.materials.length > 0) && (
+        <Description customSectionCls="lg:mb-20 sm:mb-[60px] mb-10 " isBgPrimary={false} hasCarousel title={params.slug == slug[0].triHitaKaranaBracelets ? materialDescTitle[0].triHitaKaranaBracelets : params.slug == slug[0].chipstoneBracelets ? materialDescTitle[0].chipstoneBracelets : params.slug == slug[0].redStringBracelets ? materialDescTitle[0].redStringBracelets : ""}>
+          <DynamicCarousel id="description" data={products.materials} />
+        </Description>
+      )}
       {(mostPopProducts.length > 0) && (
         <ProductsCarousel id="mostPopular" title="Most Popular" data={mostPopProducts} isProduct custCls="sm:py-20 py-10 bg-bs-fourth bg-opacity-[2%]" />
       )}

@@ -93,7 +93,9 @@ export async function getTestimonials() {
 export async function getProductsByCategory(slug: string) {
   const options = getHeaders()
   try {
-    const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/category/${slug}`, options)
+    const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/category/${slug}`, options)    
+    console.log(data.data);
+    
     return data.data
   } catch (error: any) {
     if (error.response?.data.statusCode == 401) {

@@ -44,7 +44,7 @@ export default function CountrySelection({ data }: { data: any }) {
                 <select required name="country" aria-labelledby="countryLabel" id="country" className="w-full md:border-2 border border-bs-third--lighter focus:outline-0 focus:border-bs-third py-0.5 px-1 lg:h-8 sm:h-[30px] h-7 lg:text-base sm:text-sm text-xs" >
                   <option value=""></option>
                   {data.map((country: any) => (
-                    <option key={country.id} value={country.iso3} className="lg:text-base sm:text-sm text-xs">{country.name}</option>
+                    <option key={country.id} value={`${country.iso3}-${country.currency}`} className="lg:text-base sm:text-sm text-xs">{country.name}</option>
                   ))}
                 </select>
               </div>

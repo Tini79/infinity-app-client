@@ -147,9 +147,9 @@ export default function Slick({ id, title, data, productName, productId, isCateg
                         // TODO: incase ada diskon: yg atas untuk harga normal, yg bawah harga diskon
                         // {/* <s className="lg:text-[14px] sm:text-[12px] text-[10px] text-bs-fourth tracking-[1px] opacity-50">$222&nbsp;</s> */}
                         // TODO: mata uang ($) masih statis
-                        <span className="lg:text-[16px] sm:text-[14px] text-[12px] text-bs-fourth tracking-[1px]">{image.curr_icon.replace(/&#(\d+);/g, (match: any, dec: any) =>{
+                        <span className="lg:text-[16px] sm:text-[14px] text-[12px] text-bs-fourth tracking-[1px]">{image.curr_icon.replace(/&#(\d+);/g, (match: any, dec: any) => {
                           return String.fromCharCode(dec);
-                        })}{image.price}</span>
+                        })}{image.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span>
                       ) : (
                         <span className="lg:text-[12px] sm:text-[10px] text-[8px] text-red-600">*Price will be displayed after login</span>
                       )}

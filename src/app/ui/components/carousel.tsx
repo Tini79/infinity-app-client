@@ -206,7 +206,7 @@ export default function Carousel({ id, title, data, productName, productId, isCa
                       // TODO: mata uang ($) masih statis
                       <span className="lg:text-[16px] sm:text-[14px] text-[12px] text-bs-fourth tracking-[1px]">{image.curr_icon.replace(/&#(\d+);/g, (match: any, dec: any) => {
                         return String.fromCharCode(dec);
-                      })}{image.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span>
+                      })}{image.price.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span>
                     ) : (
                       <span className="lg:text-[12px] sm:text-[10px] text-[8px] text-red-600">*Price will be displayed after login</span>
                     )}

@@ -134,37 +134,35 @@ export default function Slick({ id, title, data, productName, productId, isCateg
       <div className="slider-container">
         <Slider {...settings}>
           {data.map((image: any, i: number) => isProduct ? (
-            <>
-              <div key={`slickProduct-${image.code}`} className="md:px-2 px-1">
-                <article key={`product-${image.code}`} className={clsx("lg:p-2 sm:p-1.5 p-1", productCardCls, { "xl:h-[388px] lg:h-[378px] md:h-[308px] sm:h-[344px] xs:h-[274px] h-[254px]": isProduct })}>
-                  <section className="relative h-full">
-                    <div className="md:h-3/5 xs:h-2/3 h-[48%] lg:mb-2 sm:mb-1.5 mb-1">
-                      <Image src={`/${image.path}`} alt={image.name} title={image.name} width={388} height={274} className="w-full h-full object-cover" />
-                    </div>
-                    <div className="lg:mb-4 sm:mb-3 mb-2">
-                      <h4 className={`${crimsonText.className} lg:text-lg sm:text-base text-sm !leading-tight !font-bold lg:mb-2 sm:mb-1.5 mb-1`}>{image.name}</h4>
-                      {isAuth ? (
-                        // TODO: incase ada diskon: yg atas untuk harga normal, yg bawah harga diskon
-                        // {/* <s className="lg:text-[14px] sm:text-[12px] text-[10px] text-bs-fourth tracking-[1px] opacity-50">$222&nbsp;</s> */}
-                        // TODO: mata uang ($) masih statis
-                        <span className="lg:text-[16px] sm:text-[14px] text-[12px] text-bs-fourth tracking-[1px]">{image.curr_icon.replace(/&#(\d+);/g, (match: any, dec: any) => {
-                          return String.fromCharCode(dec);
-                        })}{image.price.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span>
-                      ) : (
-                        <span className="lg:text-[12px] sm:text-[10px] text-[8px] text-red-600">*Price will be displayed after login</span>
-                      )}
-                    </div>
-                    <div className="absolute w-full bottom-0">
-                      {isAuth ? (
-                        <Button btnType="btn-product" productName={productName} productId={productId} isAuth />
-                      ) : (
-                        <Button btnType="btn-product" />
-                      )}
-                    </div>
-                  </section>
-                </article>
-              </div>
-            </>
+            <div key={`slickProduct-${image.code}`} className="md:px-2 px-1">
+              <article key={`product-${image.code}`} className={clsx("lg:p-2 sm:p-1.5 p-1", productCardCls, { "xl:h-[388px] lg:h-[378px] md:h-[308px] sm:h-[344px] xs:h-[274px] h-[254px]": isProduct })}>
+                <section className="relative h-full">
+                  <div className="md:h-3/5 xs:h-2/3 h-[48%] lg:mb-2 sm:mb-1.5 mb-1">
+                    <Image src={`/${image.path}`} alt={image.name} title={image.name} width={388} height={274} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="lg:mb-4 sm:mb-3 mb-2">
+                    <h4 className={`${crimsonText.className} lg:text-lg sm:text-base text-sm !leading-tight !font-bold lg:mb-2 sm:mb-1.5 mb-1`}>{image.name}</h4>
+                    {isAuth ? (
+                      // TODO: incase ada diskon: yg atas untuk harga normal, yg bawah harga diskon
+                      // {/* <s className="lg:text-[14px] sm:text-[12px] text-[10px] text-bs-fourth tracking-[1px] opacity-50">$222&nbsp;</s> */}
+                      // TODO: mata uang ($) masih statis
+                      <span className="lg:text-[16px] sm:text-[14px] text-[12px] text-bs-fourth tracking-[1px]">{image.curr_icon.replace(/&#(\d+);/g, (match: any, dec: any) => {
+                        return String.fromCharCode(dec);
+                      })}{image.price.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span>
+                    ) : (
+                      <span className="lg:text-[12px] sm:text-[10px] text-[8px] text-red-600">*Price will be displayed after login</span>
+                    )}
+                  </div>
+                  <div className="absolute w-full bottom-0">
+                    {isAuth ? (
+                      <Button btnType="btn-product" productName={productName} productId={productId} isAuth />
+                    ) : (
+                      <Button btnType="btn-product" />
+                    )}
+                  </div>
+                </section>
+              </article>
+            </div>
           ) : (
             // isCategory's
             <div key={`imageOfCategory-${i}`} id={`image${i}`} className="md:px-2 px-1" onMouseEnter={() => handleHover(i)} onMouseLeave={() => handleHover(null)}>
